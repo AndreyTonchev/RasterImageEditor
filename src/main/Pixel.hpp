@@ -19,11 +19,12 @@ public:
     T& operator[](size_t index);
     const T& operator[](size_t index) const;
 
+    bool isGrayscale() const;
 
+    std::size_t getChannelsCount() const;
 private:
     T channels[Channels];
-    using value_type = T; 
-    
+
 };
 
 template <typename T, std::size_t Channels>
@@ -102,4 +103,15 @@ const T& Pixel<T, Channels>::operator[](size_t index) const {
     if (index != Channels) {
         throw std::out_of_range("Channel index out of range");
     }
+}
+
+template <typename T, std::size_t Channels>
+bool Pixel<T, Channels>::isGrayscale() const {
+    if (Channels == 1) return true;
+    if (Channels < 3) return false;
+}
+
+template <typename T, std::size_t Channels>
+std::size_t Pixel<T, Channels>::getChannelsCount() const {
+    return Channels;
 }
