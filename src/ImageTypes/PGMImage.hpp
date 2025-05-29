@@ -10,13 +10,13 @@
 
 #pragma once
 
-#include "../main/Image.hpp"
+#include "../main/AbstractImage.hpp"
 
 enum Signature {
     P2, P5, None
 };
 
-class PGMImage : public Image {
+class PGMImage {
 public:
 
     PGMImage();
@@ -35,6 +35,7 @@ public:
 private:
     Signature signature;
     int maxValue;
+    AbstractImage* image;
 
 private:
 

@@ -7,11 +7,12 @@
 #include <fstream>
 
 #include "../Pixels/AbstractPixel.hpp"
+#include "AbstractImage.hpp"
        
 
-class Image {
+template <typename PixelType>
+class Image : public AbstractImage {
 public:
-
     virtual ~Image() noexcept = default;
 
     virtual void load() const = 0;
@@ -35,7 +36,7 @@ protected:
     std::string filename;
     std::size_t width;
     std::size_t heigth;
-    std::vector<std::vector<AbstractPixel*>> pixels;
+    std::vector<std::vector<PixelType>> pixels;
 
 protected:
 

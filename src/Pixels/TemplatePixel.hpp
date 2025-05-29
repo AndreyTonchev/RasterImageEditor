@@ -21,12 +21,14 @@ public:
     const DataType& operator[](std::size_t channel) const;
 
 protected:
-    std::vector<DataType> channels;
+    DataType channels[Channels];
 };
 
 template <typename DataType, std::size_t Channels>
-TemplatePixel<DataType, Channels>::TemplatePixel()  
-    : channels(Channels) {
+TemplatePixel<DataType, Channels>::TemplatePixel() {
+    for (std::size_t i = 0; i < Channels; i++) {
+        channels[i] = 0;
+    }
 }
 
 template <typename DataType, std::size_t Channels>

@@ -5,7 +5,7 @@
 
 
 PGMImage::PGMImage() 
-    :   signature(Signature::None), maxValue(-1) {
+    : signature(Signature::None), maxValue(-1) {
 }
 
 PGMImage::PGMImage(const std::string& filename) {
