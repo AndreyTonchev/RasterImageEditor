@@ -80,7 +80,7 @@ void PGMImage::loadP2File(std::ifstream& is) {
             
         }
         else {
-            throw FormatException("Max pixlel value is too latge");
+            throw FormatException("Max pixel value is too large");
         }
 
         for (std::size_t y = 0; y < heigth; y++) {

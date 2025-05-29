@@ -6,7 +6,7 @@
 #include <iostream>
 #include <fstream>
 
-#include "Pixel.hpp"
+#include "../Pixels/AbstractPixel.hpp"
        
 
 class Image {
@@ -35,7 +35,7 @@ protected:
     std::string filename;
     std::size_t width;
     std::size_t heigth;
-    std::vector<std::vector<Pixel*>> pixels;
+    std::vector<std::vector<AbstractPixel*>> pixels;
 
 protected:
 

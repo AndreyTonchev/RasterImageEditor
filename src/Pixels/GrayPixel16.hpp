@@ -1,18 +1,16 @@
 #pragma once
 
-#include "../main/Pixel.hpp"
+#include "TemplatePixel.hpp"
 
-class GrayPixel16 : public Pixel {
+class GrayPixel16 : public TemplatePixel<uint16_t, 1> {
 public:
     GrayPixel16(uint8_t value = 0);
 
-    Pixel* clone() const override;
-    Pixel* negative() const override;
-    Pixel* grayscale() const override;
-
-    int getValue() const override;
-    void setValue(int newValue) override;
-
+    virtual AbstractPixel* clone() const override;
+    virtual AbstractPixel* negative() const override;
+    virtual AbstractPixel* grayscale() const override;
 private:
-    uint16_t value;
+    enum Channels {
+        GRAY
+    };
 };

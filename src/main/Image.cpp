@@ -12,5 +12,5 @@ std::size_t Image::getHeigth() const {
 
 
 void Image::resize(std::size_t new_width, std::size_t new_height) {
-    // TODO
+    
 }
