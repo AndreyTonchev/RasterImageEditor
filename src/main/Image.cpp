@@ -1,17 +1,25 @@
 #include "Image.hpp"
 
+Image::Image()
+    : pixels(nullptr), filename("") {
+}
 
-std::size_t Image::getWidth() const {
-    return width;
-}    
-
-
-std::size_t Image::getHeigth() const {
-    return heigth;
-}    
-
-
-void Image::resize(std::size_t new_width, std::size_t new_height) {
+void Image::grayscale() {
 
 }
-    // TODO
+
+void Image::negative() {
+
+}
+
+
+
+std::size_t Image::getWidth() const {
+    return pixels->getWidth();
+}    
+
+
+std::size_t Image::getHeight() const {
+    return pixels->getHeight();
+}    
+

@@ -1,37 +1,40 @@
 #include "PGMImage.hpp"
 #include "../Pixels/GrayPixel16.hpp"
 #include "../Pixels/GrayPixel8.hpp"
+#include "../main/PixelMatrix.hpp"
+#include "../utils/Exceptions.hpp"
 
 
 
 PGMImage::PGMImage() 
-    :   signature(Signature::None), maxValue(-1) {
+    : signature(Signature::None), maxValue(-1) {
 }
 
 PGMImage::PGMImage(const std::string& filename) {
     if (filename == "") {
         throw FileException("Bad File Name.");
-    }
-
+    }   
+ 
     std::ifstream file(filename, std::ios::in);
     if (!file) {
         throw FileException("Error opening file for reading.");
     }
 
-    file >> this->width >> this->heigth >> this->maxValue;
-    if (!file) {
-        throw FileException("Error reading file data");
-    }
-
-    if (this->width == 0 || this->heigth == 0 || this->maxValue == 0) {
-        throw FormatException("Bad Image values");
-    }
-
     std::string imageSignature;
     file >> imageSignature;
     if (!file) {
-        throw FileException("Error reading file data.");
+        throw FileException("Error reading file data (Signature).");
     }
+    
+    file >> this->width >> this->height >> this->maxValue;
+    if (!file) {
+        throw FileException("Error reading file data (Dimensions)");
+    }
+
+    if (this->width == 0 || this->height == 0 || this->maxValue == 0) {
+        throw FormatException("Bad Image values");
+    }
+
 
     if (imageSignature == "P2") {
         this->signature = Signature::P2;
@@ -59,31 +62,29 @@ PGMImage::PGMImage(const std::string& filename) {
 // }
 
 
-void PGMImage::load() const  {
-
-}
-
-void PGMImage::save(const std::string& outputFilename) const  {
-
-}
-
 void PGMImage::print(std::ostream& os) const {
+    std::string signatureStr = (signature == Signature::P2) ? "P2" : "P5";
 
+    os << signatureStr << std::endl;
+    os << width << height << std::endl;
+    os << maxValue << std::endl;
+    os << pixels << std::endl;
+    
 }
 
 void PGMImage::loadP2File(std::ifstream& is) {
     try {
         if (maxValue <= 255) {
-            
+            pixels = new PixelMatrix<GrayPixel8>(width, height);
         }
         if (maxValue <= 65535) {
-            
+            pixels = new PixelMatrix<GrayPixel16>(width, height);
         }
         else {
             throw FormatException("Max pixel value is too large");
         }
 
-        for (std::size_t y = 0; y < heigth; y++) {
+        for (std::size_t y = 0; y < height; y++) {
             for (std::size_t x = 0; x < width; x++) {
                 int pixelValue;
 
@@ -94,7 +95,7 @@ void PGMImage::loadP2File(std::ifstream& is) {
                 if (pixelValue < 0 || pixelValue > maxValue) {
                     throw FormatException("Bad pixel value at (" + std::to_string(x) + ',' + std::to_string(y) + ")");
                 }
-                
+                pixels->at(x,y)->setChannel(GRAY, pixelValue);
             }
         }
 
@@ -103,6 +104,6 @@ void PGMImage::loadP2File(std::ifstream& is) {
     }
 }
 
-void PGMImage::loadP2File(std::ifstream& is) {
+void PGMImage::loadP5File(std::ifstream& is) {
     
 }

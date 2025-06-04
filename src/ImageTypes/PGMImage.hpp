@@ -10,7 +10,9 @@
 
 #pragma once
 
+#include "../main/AbstractImage.hpp"
 #include "../main/Image.hpp"
+
 
 enum Signature {
     P2, P5, None
@@ -25,8 +27,8 @@ public:
     // PGMImage& operator=(const Image& other);
     // virtual ~PGMImage();
 
-    virtual void load() const override;
-    virtual void save(const std::string& outputFilename = "") const override;
+    // virtual void load() const override;
+    // virtual void save(const std::string& outputFilename = "") const override;
 
     inline virtual Image* clone() const override { return new PGMImage(*this); }
     
@@ -35,9 +37,15 @@ public:
 private:
     Signature signature;
     int maxValue;
+    int height;
+    int width;
 
 private:
-
     void loadP2File(std::ifstream& is);
     void loadP5File(std::ifstream& is);
+
+private:
+    enum Channels {
+        GRAY
+    };
 };

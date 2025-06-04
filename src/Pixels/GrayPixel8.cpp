@@ -2,7 +2,7 @@
 
 GrayPixel8::GrayPixel8(uint8_t value) 
     : TemplatePixel() {
-    channels[GRAY] = 0;
+    channels[GRAY] = value;
 }
 
 AbstractPixel* GrayPixel8::clone() const  {

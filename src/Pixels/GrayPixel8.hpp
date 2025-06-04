@@ -11,7 +11,7 @@ public:
     virtual AbstractPixel* grayscale() const override;
 
 private:
-    enum Channels{
+    enum Channels {
         GRAY
     };
 };
