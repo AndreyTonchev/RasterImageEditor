@@ -29,20 +29,20 @@ int main() {
 
     
     try {
-        std::string filename1("negative.ppm");
-        std::string filename2("monochrome.ppm");
-        std::string filename3("grayscale.ppm");
+        std::string filename1("media/negative.ppm");
+        std::string filename2("media/monochrome.ppm");
+        std::string filename3("media/grayscale.ppm");
 
         
-        PPMImage ppm1("PPM_P3.ppm");
+        PPMImage ppm1("media/PPM_P3.ppm");
         ppm1.negative();
         ppm1.save(filename1);
         
-        PPMImage ppm2("PPM_P3.ppm");
+        PPMImage ppm2("media/PPM_P3.ppm");
         ppm2.monochrome();
         ppm2.save(filename2);
 
-        PPMImage ppm3("PPM_P3.ppm");
+        PPMImage ppm3("media/PPM_P3.ppm");
         ppm3.grayscale();
         ppm3.save(filename3);
 
