@@ -58,7 +58,7 @@ void PBMImage::print(std::ostream& os) const {
 
 void PBMImage::loadP1File(std::istream& is) {
     try {
-        pixels = new PixelMatrix<MonoPixel8>(width, height);
+        pixels = new PixelMatrix<MonoPixel8>(width, height, 1);
         
         for (std::size_t y = 0; y < height; y++) {
             for (std::size_t x = 0; x < width; x++) {

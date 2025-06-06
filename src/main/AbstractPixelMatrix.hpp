@@ -20,4 +20,11 @@ public:
         pixelMatrix->print(os);
         return os;
     }
+
+public: 
+    // void grayscale();
+    // void monochrome();
+    virtual void negative() = 0;
+
+    
 };

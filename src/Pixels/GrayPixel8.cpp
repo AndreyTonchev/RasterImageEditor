@@ -9,11 +9,3 @@ AbstractPixel* GrayPixel8::clone() const  {
     return new GrayPixel8(*this);
 }
 
-AbstractPixel* GrayPixel8::negative() const  {
-    return new GrayPixel8(*this); // TODO
-}
-
-AbstractPixel* GrayPixel8::grayscale() const  {
-    return new GrayPixel8(*this);
-}
-

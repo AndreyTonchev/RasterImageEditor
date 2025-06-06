@@ -51,17 +51,16 @@ public:
     virtual ~Image() noexcept { delete pixels; };
     
     virtual Image* clone() const = 0;
-    virtual void grayscale();
-    virtual void negative();
 
     std::size_t getWidth() const;
     std::size_t getHeight() const;
     
     virtual void print(std::ostream& os = std::cout) const = 0;
 
+public:
+    void negative();
+
 protected:
     std::string filename;
-
     AbstractPixelMatrix* pixels;
-
 };

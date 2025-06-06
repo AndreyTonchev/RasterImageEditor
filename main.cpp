@@ -13,6 +13,8 @@ int main() {
 
     PBMImage pbm1("pbm_1.pbm");
     pbm1.print();
+    pbm1.negative();
+    pbm1.print();
 
     return 0;
 }

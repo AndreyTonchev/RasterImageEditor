@@ -15,13 +15,14 @@ public:
     virtual ~TemplatePixel() noexcept= default;
 
     virtual AbstractPixel* clone() const = 0;
-    virtual AbstractPixel* negative() const = 0;
-    virtual AbstractPixel* grayscale() const = 0;
 
     virtual void setChannel(std::size_t channel, uint32_t value) override;
     virtual uint32_t getChannel(std::size_t channel) const override;
 
     virtual void print(std::ostream& os = std::cout) const override;
+
+public:
+    virtual void negative(int maxValue) override;
 
 protected:
     DataType channels[Channels];
@@ -56,3 +57,10 @@ void TemplatePixel<DataType, Channels>::print(std::ostream& os) const {
         os << (int)channels[i] << " ";
     }
 } 
+
+template <typename DataType, std::size_t Channels>
+void TemplatePixel<DataType, Channels>::negative(int maxValue) {
+    for (int i = 0; i < Channels; i++) {
+        channels[i] = maxValue - channels[i];
+    }
+}

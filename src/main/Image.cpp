@@ -4,15 +4,9 @@ Image::Image()
     : pixels(nullptr), filename("") {
 }
 
-void Image::grayscale() {
-
-}
-
 void Image::negative() {
-
+    pixels->negative();
 }
-
-
 
 std::size_t Image::getWidth() const {
     return pixels->getWidth();

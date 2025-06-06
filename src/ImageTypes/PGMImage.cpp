@@ -62,10 +62,10 @@ void PGMImage::print(std::ostream& os) const {
 void PGMImage::loadP2File(std::istream& is) {
     try {
         if (maxValue <= 255) {
-            pixels = new PixelMatrix<GrayPixel8>(width, height);
+            pixels = new PixelMatrix<GrayPixel8>(width, height, maxValue);
         }
         if (maxValue <= 65535) {
-            pixels = new PixelMatrix<GrayPixel16>(width, height);
+            pixels = new PixelMatrix<GrayPixel16>(width, height, maxValue);
         }
         else {
             throw FormatException("Max pixel value is too large");
