@@ -29,23 +29,26 @@ int main() {
 
     
     try {
-        PPMImage ppm1("ppm_1.ppm");
-        ppm1.print();
+        std::string filename1("negative.ppm");
+        std::string filename2("monochrome.ppm");
+        std::string filename3("grayscale.ppm");
 
-        PPMImage ppm2("ppm_1.ppm");
-        ppm2.negative();
-        ppm2.print();
+        
+        PPMImage ppm1("PPM_P3.ppm");
+        ppm1.negative();
+        ppm1.save(filename1);
+        
+        PPMImage ppm2("PPM_P3.ppm");
+        ppm2.monochrome();
+        ppm2.save(filename2);
 
-        PPMImage ppm3("ppm_1.ppm");
+        PPMImage ppm3("PPM_P3.ppm");
         ppm3.grayscale();
-        ppm3.print();
+        ppm3.save(filename3);
 
-        PPMImage ppm4("ppm_1.ppm");
-        ppm4.monochrome();
-        ppm4.print();
 
-    } catch (const std::exception& e) { 
-        std::cout << e.what();
+    } catch (...) { 
+        // TODO
     }
 
     return 0;

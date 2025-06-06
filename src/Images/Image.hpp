@@ -57,11 +57,13 @@ public:
     
     virtual void print(std::ostream& os = std::cout) const = 0;
 
-public:
+    
+    public:
     void negative();
     void grayscale();
     void monochrome();
-
+    void save(std::string& filename) const;
+    
 protected:
     std::string filename;
     AbstractPixelMatrix* pixels;

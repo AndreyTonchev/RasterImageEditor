@@ -25,3 +25,16 @@ std::size_t Image::getHeight() const {
     return pixels->getHeight();
 }    
 
+void Image::save(std::string& filename) const {
+    if (filename == "") {
+        throw FileException("Bad File Name.");
+    }
+
+    std::ofstream file(filename);
+    if (!file) {
+        throw FileException("Error opening file for writing.");
+    }
+
+    this->print(file); // need to check if file is ok
+    file.close();
+}
