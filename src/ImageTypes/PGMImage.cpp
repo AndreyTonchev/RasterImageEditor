@@ -7,7 +7,7 @@
 
 
 PGMImage::PGMImage() 
-    : signature(PGMSignature::NONE), maxValue(-1), width(0), height(0) {
+    : Image(), signature(PGMSignature::NONE), maxValue(-1), width(0), height(0) {
 }
 
 PGMImage::PGMImage(const std::string& filename) {
@@ -53,7 +53,7 @@ void PGMImage::print(std::ostream& os) const {
     std::string signatureStr = (signature == PGMSignature::P2) ? "P2" : "P5";
 
     os << signatureStr << std::endl;
-    os << width << height << std::endl;
+    os << width << ' ' << height << std::endl;
     os << maxValue << std::endl;
     os << pixels << std::endl;
     
@@ -64,7 +64,7 @@ void PGMImage::loadP2File(std::istream& is) {
         if (maxValue <= 255) {
             pixels = new PixelMatrix<GrayPixel8>(width, height, maxValue);
         }
-        if (maxValue <= 65535) {
+        else if (maxValue <= 65535) {
             pixels = new PixelMatrix<GrayPixel16>(width, height, maxValue);
         }
         else {
