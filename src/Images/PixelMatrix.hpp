@@ -24,11 +24,12 @@ public:
     virtual void grayscale() override;
     virtual void monochrome() override;
 
-public:
+private:
     std::size_t width;
     std::size_t height;
     std::size_t maxValue;
     std::vector<std::vector<PixelType>> pixels;
+    
 };
 
 template <typename PixelType>

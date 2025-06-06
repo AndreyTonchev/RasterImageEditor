@@ -8,6 +8,7 @@
 
 #include "../Pixels/AbstractPixel.hpp"
 #include "AbstractPixelMatrix.hpp"
+#include "../utils/Exceptions.hpp"
        
 
 // template <typename PixelType>

@@ -1,7 +1,6 @@
 #include "PBMImage.hpp"
 #include "../../Pixels/PixelTypes/MonoPixel8.hpp"
 #include "../PixelMatrix.hpp"
-#include "../../utils/Exceptions.hpp"
 
 
 PBMImage::PBMImage() 
@@ -9,41 +8,48 @@ PBMImage::PBMImage()
 }
 
 PBMImage::PBMImage(const std::string& filename) {
-    if (filename == "") {
-        throw FileException("Bad File Name.");
-    }   
- 
-    std::ifstream file(filename, std::ios::in);
-    if (!file) {
-        throw FileException("Error opening file for reading.");
-    }
-
-    std::string imageSignature;
-    file >> imageSignature;
-    if (!file) {
-        throw FileException("Error reading file data (Signature).");
-    }
+    std::ifstream file;
+    try {
+        if (filename == "") {
+            throw FileException("Bad File Name.");
+        }   
     
-    file >> this->width >> this->height;
-    if (!file) {
-        throw FileException("Error reading file data (Dimensions)");
-    }
+        file.open(filename, std::ios::in);
+        if (!file) {
+            throw FileException("Error opening file for reading.");
+        }
 
-    if (this->width == 0 || this->height == 0 ) {
-        throw FormatException("Bad Image values");
-    }
+        std::string imageSignature;
+        file >> imageSignature;
+        if (!file) {
+            throw FileException("Error reading file data (Signature).");
+        }
+        
+        file >> this->width >> this->height;
+        if (!file) {
+            throw FileException("Error reading file data (Dimensions)");
+        }
+
+        if (this->width == 0 || this->height == 0 ) {
+            throw FormatException("Bad Image values");
+        }
 
 
-    if (imageSignature == "P1") {
-        this->signature = PBMSignature::P4;
-        loadP1File(file);
-    }
-    else if (imageSignature == "P4") {
-        this->signature = PBMSignature::P4;
-        loadP4File(file);
-    }
-    else {
-        throw FormatException("Signature not matching Image type.");
+        if (imageSignature == "P1") {
+            this->signature = PBMSignature::P4;
+            loadP1File(file);
+        }
+        else if (imageSignature == "P4") {
+            this->signature = PBMSignature::P4;
+            loadP4File(file);
+        }
+        else {
+            throw FormatException("Signature not matching Image type.");
+        }
+        file.close();
+    } catch (...) {
+        file.close();
+        throw;
     }
 }
 
@@ -76,6 +82,7 @@ void PBMImage::loadP1File(std::istream& is) {
         }
 
     } catch (...) {
+        delete pixels;
         throw;
     }
 }

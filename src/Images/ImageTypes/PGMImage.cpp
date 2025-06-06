@@ -2,7 +2,6 @@
 #include "../../Pixels/PixelTypes/GrayPixel16.hpp"
 #include "../../Pixels/PixelTypes/GrayPixel8.hpp"
 #include "../PixelMatrix.hpp"
-#include "../../utils/Exceptions.hpp"
 
 
 
@@ -11,41 +10,49 @@ PGMImage::PGMImage()
 }
 
 PGMImage::PGMImage(const std::string& filename) {
-    if (filename == "") {
-        throw FileException("Bad File Name.");
-    }   
- 
-    std::ifstream file(filename, std::ios::in);
-    if (!file) {
-        throw FileException("Error opening file for reading.");
-    }
+    std::ifstream file;
+    try {
 
-    std::string imageSignature;
-    file >> imageSignature;
-    if (!file) {
-        throw FileException("Error reading file data (Signature).");
-    }
+        if (filename == "") {
+            throw FileException("Bad File Name.");
+        }   
+     
+        file.open(filename, std::ios::in);
+        if (!file) {
+            throw FileException("Error opening file for reading.");
+        }
     
-    file >> this->width >> this->height >> this->maxValue;
-    if (!file) {
-        throw FileException("Error reading file data (Dimensions)");
-    }
-
-    if (this->width == 0 || this->height == 0 || this->maxValue == 0) {
-        throw FormatException("Bad Image values");
-    }
-
-
-    if (imageSignature == "P2") {
-        this->signature = PGMSignature::P2;
-        loadP2File(file);
-    }
-    else if (imageSignature == "P5") {
-        this->signature = PGMSignature::P5;
-        loadP5File(file);
-    }
-    else {
-        throw FormatException("Signature not matching Image type.");
+        std::string imageSignature;
+        file >> imageSignature;
+        if (!file) {
+            throw FileException("Error reading file data (Signature).");
+        }
+        
+        file >> this->width >> this->height >> this->maxValue;
+        if (!file) {
+            throw FileException("Error reading file data (Dimensions)");
+        }
+    
+        if (this->width == 0 || this->height == 0 || this->maxValue == 0) {
+            throw FormatException("Bad Image values");
+        }
+    
+    
+        if (imageSignature == "P2") {
+            this->signature = PGMSignature::P2;
+            loadP2File(file);
+        }
+        else if (imageSignature == "P5") {
+            this->signature = PGMSignature::P5;
+            loadP5File(file);
+        }
+        else {
+            throw FormatException("Signature not matching Image type.");
+        }
+        file.close();
+    } catch (...) {
+        file.close();
+        throw;
     }
 }
 
@@ -87,6 +94,7 @@ void PGMImage::loadP2File(std::istream& is) {
         }
 
     } catch (...) {
+        delete pixels;
         throw;
     }
 }
