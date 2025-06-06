@@ -49,6 +49,7 @@ public:
     Image();
 
     virtual ~Image() noexcept { delete pixels; };
+    
     virtual Image* clone() const = 0;
     virtual void grayscale();
     virtual void negative();

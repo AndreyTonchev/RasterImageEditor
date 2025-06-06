@@ -7,7 +7,7 @@
 
 
 PGMImage::PGMImage() 
-    : signature(Signature::None), maxValue(-1) {
+    : signature(PGMSignature::NONE), maxValue(-1), width(0), height(0) {
 }
 
 PGMImage::PGMImage(const std::string& filename) {
@@ -37,11 +37,11 @@ PGMImage::PGMImage(const std::string& filename) {
 
 
     if (imageSignature == "P2") {
-        this->signature = Signature::P2;
+        this->signature = PGMSignature::P2;
         loadP2File(file);
     }
     else if (imageSignature == "P5") {
-        this->signature = Signature::P5;
+        this->signature = PGMSignature::P5;
         loadP5File(file);
     }
     else {
@@ -49,21 +49,8 @@ PGMImage::PGMImage(const std::string& filename) {
     }
 }
 
-// PGMImage::PGMImage(const Image& other) {
-
-// }
-
-// PGMImage& PGMImage::operator=(const Image& other) {
-
-// }
-
-// PGMImage::~PGMImage() {
-
-// }
-
-
 void PGMImage::print(std::ostream& os) const {
-    std::string signatureStr = (signature == Signature::P2) ? "P2" : "P5";
+    std::string signatureStr = (signature == PGMSignature::P2) ? "P2" : "P5";
 
     os << signatureStr << std::endl;
     os << width << height << std::endl;
@@ -72,7 +59,7 @@ void PGMImage::print(std::ostream& os) const {
     
 }
 
-void PGMImage::loadP2File(std::ifstream& is) {
+void PGMImage::loadP2File(std::istream& is) {
     try {
         if (maxValue <= 255) {
             pixels = new PixelMatrix<GrayPixel8>(width, height);
@@ -104,6 +91,6 @@ void PGMImage::loadP2File(std::ifstream& is) {
     }
 }
 
-void PGMImage::loadP5File(std::ifstream& is) {
+void PGMImage::loadP5File(std::istream& is) {
     
 }

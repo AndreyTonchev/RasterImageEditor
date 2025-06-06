@@ -14,8 +14,10 @@
 #include "../main/Image.hpp"
 
 
-enum Signature {
-    P2, P5, None
+enum class PGMSignature {
+    NONE = -1, 
+    P2, 
+    P5,
 };
 
 class PGMImage : public Image {
@@ -23,26 +25,20 @@ public:
 
     PGMImage();
     PGMImage(const std::string& filename);
-    // PGMImage(const Image& other);
-    // PGMImage& operator=(const Image& other);
-    // virtual ~PGMImage();
-
-    // virtual void load() const override;
-    // virtual void save(const std::string& outputFilename = "") const override;
 
     inline virtual Image* clone() const override { return new PGMImage(*this); }
     
-    virtual void print(std::ostream& os = std::cout) const;
+    virtual void print(std::ostream& os = std::cout) const override;
 
 private:
-    Signature signature;
+    PGMSignature signature;
     int maxValue;
     int height;
     int width;
 
 private:
-    void loadP2File(std::ifstream& is);
-    void loadP5File(std::ifstream& is);
+    void loadP2File(std::istream& is);
+    void loadP5File(std::istream& is);
 
 private:
     enum Channels {
