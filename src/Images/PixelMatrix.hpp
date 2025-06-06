@@ -21,6 +21,8 @@ public:
 
 public:
     virtual void negative() override;
+    virtual void grayscale() override;
+    virtual void monochrome() override;
 
 public:
     std::size_t width;
@@ -75,6 +77,24 @@ void PixelMatrix<PixelType>::negative() {
     for (std::size_t y = 0; y < height; y++) {
         for (std::size_t x = 0; x < width; x++) {
             pixels[y][x].negative(maxValue);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::monochrome() {
+    for (std::size_t y = 0; y < height; y++) {
+        for (std::size_t x = 0; x < width; x++) {
+            pixels[y][x].monochrome(maxValue);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::grayscale() {
+    for (std::size_t y = 0; y < height; y++) {
+        for (std::size_t x = 0; x < width; x++) {
+            pixels[y][x].grayscale(maxValue);
         }
     }
 }

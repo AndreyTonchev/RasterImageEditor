@@ -23,6 +23,8 @@ public:
 
 public:
     virtual void negative(int maxValue) override;
+    virtual void monochrome(int maxValue) override;
+    virtual void grayscale(int maxValue) override;
 
 protected:
     DataType channels[Channels];
@@ -63,4 +65,40 @@ void TemplatePixel<DataType, Channels>::negative(int maxValue) {
     for (int i = 0; i < Channels; i++) {
         channels[i] = maxValue - channels[i];
     }
+}
+
+template <typename DataType, std::size_t Channels>
+void TemplatePixel<DataType, Channels>::monochrome(int maxValue) {
+    long sum = 0;
+    int threshold = (maxValue * Channels) / 2;
+
+    for (int i = 0; i < Channels; i++) {
+        sum += channels[i];
+    }
+
+    if (sum >= threshold) {
+        for (int i = 0; i < Channels; i++) {
+            channels[i] = maxValue;
+        }   
+    }
+    else {
+        for (int i = 0; i < Channels; i++) {
+            channels[i] = 0;
+        } 
+    }
+}
+
+template <typename DataType, std::size_t Channels>
+void TemplatePixel<DataType, Channels>::grayscale(int maxValue) {
+    long sum = 0;
+
+    for (int i = 0; i < Channels; i++) {
+        sum += channels[i];
+    }
+
+    DataType gray = static_cast<DataType>(sum / Channels);
+
+    for (int i = 0; i < Channels; i++) {
+        channels[i] = gray;
+    }   
 }

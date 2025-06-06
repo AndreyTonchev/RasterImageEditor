@@ -58,6 +58,8 @@ public:
 
 public:
     void negative();
+    void grayscale();
+    void monochrome();
 
 protected:
     std::string filename;

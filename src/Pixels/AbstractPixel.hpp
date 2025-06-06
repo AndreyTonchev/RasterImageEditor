@@ -18,6 +18,8 @@ public:
     // void grayscale();
     // void monochrome();
     virtual void negative(int maxValue) = 0;
+    virtual void monochrome(int maxVlaue) = 0;
+    virtual void grayscale(int maxValue) = 0;
 
     inline friend std::ostream& operator<<(std::ostream& os, AbstractPixel* pixel) {
         pixel->print(os);
