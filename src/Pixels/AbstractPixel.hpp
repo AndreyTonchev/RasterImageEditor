@@ -1,5 +1,8 @@
 #pragma once
 
+#include <iostream>
+#include <memory>
+
 class AbstractPixel {
 public:
     virtual ~AbstractPixel() = default;

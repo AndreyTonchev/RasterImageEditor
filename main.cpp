@@ -1,8 +1,7 @@
 #include <iostream>
 
-#include "src/ImageTypes/PGMImage.hpp"
-#include "src/ImageTypes/PBMImage.hpp"
-#include "src/Pixels/GrayPixel8.hpp"
+#include "src/Images/ImageTypes/PGMImage.hpp"
+#include "src/Images/ImageTypes/PBMImage.hpp"
 
 
 

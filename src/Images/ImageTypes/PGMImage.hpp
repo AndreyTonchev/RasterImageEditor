@@ -10,8 +10,7 @@
 
 #pragma once
 
-#include "../main/AbstractImage.hpp"
-#include "../main/Image.hpp"
+#include "../Image.hpp"
 
 
 enum class PGMSignature {

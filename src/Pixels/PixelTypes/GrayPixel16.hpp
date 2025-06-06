@@ -1,6 +1,6 @@
 #pragma once
 
-#include "TemplatePixel.hpp"
+#include "../TemplatePixel.hpp"
 
 class GrayPixel16 : public TemplatePixel<uint16_t, 1> {
 public:

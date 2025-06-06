@@ -1,7 +1,7 @@
 #include "PBMImage.hpp"
-#include "../Pixels/MonoPixel8.hpp"
-#include "../main/PixelMatrix.hpp"
-#include "../utils/Exceptions.hpp"
+#include "../../Pixels/PixelTypes/MonoPixel8.hpp"
+#include "../PixelMatrix.hpp"
+#include "../../utils/Exceptions.hpp"
 
 
 PBMImage::PBMImage() 

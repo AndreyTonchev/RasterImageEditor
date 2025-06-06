@@ -7,7 +7,6 @@
 #include <fstream>
 
 #include "../Pixels/AbstractPixel.hpp"
-#include "AbstractImage.hpp"
 #include "AbstractPixelMatrix.hpp"
        
 

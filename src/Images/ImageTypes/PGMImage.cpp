@@ -1,8 +1,8 @@
 #include "PGMImage.hpp"
-#include "../Pixels/GrayPixel16.hpp"
-#include "../Pixels/GrayPixel8.hpp"
-#include "../main/PixelMatrix.hpp"
-#include "../utils/Exceptions.hpp"
+#include "../../Pixels/PixelTypes/GrayPixel16.hpp"
+#include "../../Pixels/PixelTypes/GrayPixel8.hpp"
+#include "../PixelMatrix.hpp"
+#include "../../utils/Exceptions.hpp"
 
 
 
