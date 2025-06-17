@@ -12,7 +12,7 @@ template <typename DataType, std::size_t Channels>
 class TemplatePixel : public AbstractPixel {
 public:
     TemplatePixel();
-    virtual ~TemplatePixel() noexcept= default;
+    virtual ~TemplatePixel() noexcept = default;
 
     virtual AbstractPixel* clone() const = 0;
 

@@ -11,42 +11,11 @@
 #include "../utils/Exceptions.hpp"
        
 
-// template <typename PixelType>
-// class Image : public AbstractImage {
-// public:
-//     Image();
-//     virtual ~Image() noexcept = default;
-
-//     virtual Image* clone() const = 0;
-
-//     std::size_t getWidth() const;
-//     std::size_t getHeigth() const;
-
-//     virtual void print(std::ostream& os = std::cout) const = 0;
-
-//     // void grayscale();
-//     // void monochrome();
-//     // void negative();
-//     // void rotateLeft();
-//     // void rotateRight();
-//     // void flipHorizontal();
-//     // void flipVertical();
-
-// protected:
-//     std::string filename;
-//     std::size_t width;
-//     std::size_t heigth;
-    
-
-
-// protected:
-
-//     void resize(std::size_t new_width, std::size_t new_height);
-// };
-
 class Image {
 public:
     Image();
+
+    // TODO Cop and operator=
 
     virtual ~Image() noexcept { delete pixels; };
     
@@ -62,9 +31,25 @@ public:
     void negative();
     void grayscale();
     void monochrome();
-    void save(std::string& filename) const;
+    void save(const std::string& filename) const;
+
+public:
+    enum class Orientation {
+        NONE = -1,
+        R0,     // Rotate 0
+        R90,    // Rotate 90
+        R180,   // Rotate 180
+        R270,   // Rotate 270
+        MH,     // Mirror Horizontal
+        MV,     // Mirror Vertical
+        DF,     // Diagonal Flip
+        AD,     // Anti Diagonal Flip
+    };
+
     
 protected:
     std::string filename;
     AbstractPixelMatrix* pixels;
+    Orientation orientation;
+    static Orientation orientationTable[8][8];
 };

@@ -28,25 +28,20 @@ int main() {
     // pbm1.print();
 
     
-    try {
-        std::string filename1("media/negative.ppm");
-        std::string filename2("media/monochrome.ppm");
-        std::string filename3("media/grayscale.ppm");
-
-        
+    try { 
         PPMImage ppm1("media/PPM_P3.ppm");
         ppm1.negative();
-        ppm1.save(filename1);
+        ppm1.save("media/negative.ppm");
         
         PPMImage ppm2("media/PPM_P3.ppm");
         ppm2.monochrome();
-        ppm2.save(filename2);
+        ppm2.save("media/monochrome.ppm");
 
         PPMImage ppm3("media/PPM_P3.ppm");
         ppm3.grayscale();
-        ppm3.save(filename3);
+        ppm3.save("media/grayscale.ppm");
 
-
+        
     } catch (...) { 
         // TODO
     }

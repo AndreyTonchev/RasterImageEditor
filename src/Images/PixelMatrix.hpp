@@ -6,17 +6,6 @@
 #include "../Pixels/TemplatePixel.hpp"
 #include "../utils/Exceptions.hpp"
 
-enum class Orientation {
-    NONE = -1,
-    Rotate0,
-    Rotate90,
-    Rotate180,
-    Rotate270,
-    MirrorHorizontal,
-    MirrorVertical,
-    DiagonalFlip,
-    AntiDiagonalFlip,
-};
 
 template <typename PixelType>
 class PixelMatrix : public AbstractPixelMatrix {
@@ -118,7 +107,7 @@ void PixelMatrix<PixelType>::print(std::ostream& os) const {
         break;
 
     case Orientation::Rotate90 :
-        for (int )
+        for (int w = 0; w < width)
         break;
     case Orientation::Rotate180 :
         break;
