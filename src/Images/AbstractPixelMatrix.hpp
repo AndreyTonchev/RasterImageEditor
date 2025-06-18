@@ -24,13 +24,9 @@ public:
     virtual void printDF(std::ostream& os = std::cout) const = 0;
     virtual void printAD(std::ostream& os = std::cout) const = 0;
 
-
-    public: 
-    // void grayscale();
-    // void monochrome();
+public: 
     virtual void negative() = 0;
     virtual void grayscale() = 0;
     virtual void monochrome() = 0;
 
-    
 };

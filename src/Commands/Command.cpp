@@ -27,3 +27,17 @@ std::vector<std::string> Command::split(const std::string& str) {
     return args;
 
 }
+
+void Command::validate() const {
+    return;
+}
+
+void Command::parse(const std::vector<std::string>& args) {
+    if (args.size() > 0) {
+        throw CommandException("Invalid elemets count passed. Expected 0");
+    }
+}
+
+bool Command::isInstant() const {
+    return instant;
+}

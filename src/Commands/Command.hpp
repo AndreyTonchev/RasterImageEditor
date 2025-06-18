@@ -13,13 +13,29 @@ public:
     
     virtual ~Command() = default; // We dont want to delete the Session when the command dies
 
-    virtual void parse(const std::vector<std::string>& args) = 0;
-    virtual void validate() const = 0;
+    virtual void parse(const std::vector<std::string>& args);
+    virtual void validate() const;
     virtual void execute() = 0;
+
+    bool isInstant() const;
     
     std::vector<Image*>& getSessionImages(Session* s);
 
     static std::vector<std::string> split(const std::string& str);
+
 protected:
+    bool instant;
     Session* currentSession;
+};
+
+class CommandException : public std::exception {
+protected:
+    std::string message;
+
+public:
+    CommandException(const std::string& msg) 
+        : message("Command error : " + msg) {
+
+    }
+    const char* what() const noexcept override { return message.c_str(); }
 };

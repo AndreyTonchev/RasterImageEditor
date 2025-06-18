@@ -7,6 +7,9 @@
 
 class Session {
 public:
+    Session();
+
+    bool addCommand(Command* cmd);
 
 private:
     std::vector<Image*> images;
@@ -14,11 +17,10 @@ private:
     std::vector<Command*> undoCommands;
 
     unsigned int id;
-
     
 private:
-    static unsigned int lastID;
-    static unsigned int generateID();
+    static unsigned int lastId;
+    static unsigned int generateId();
 
     friend std::vector<Image*>& Command::getSessionImages(Session*);
 };

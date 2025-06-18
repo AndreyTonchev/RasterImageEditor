@@ -32,31 +32,18 @@ int main() {
 
     
     try { 
-        std::vector<std::string> args;
-        args = Command::split("Gay NIggas From Outer Space");
-
-        for (size_t i = 0; i < args.size(); i++)
-        {
-            std::cout << args[i] << " ";
-        }
-        std::cout << args.size();
         
+        PPMImage ppm1("media/PPM_P3.ppm");
+        ppm1.negative();
+        ppm1.save("media/negative.ppm");
         
+        PPMImage ppm2("media/PPM_P3.ppm");
+        ppm2.monochrome();
+        ppm2.save("media/monochrome.ppm");
 
-        // PPMImage ppm1("media/PPM_P3.ppm");
-        // ppm1.negative();
-        // ppm1.save("media/negative.ppm");
-        
-        // PPMImage ppm2("media/PPM_P3.ppm");
-        // ppm2.monochrome();
-        // ppm2.save("media/monochrome.ppm");
-
-        // PPMImage ppm3("media/PPM_P3.ppm");
-        // ppm3.grayscale();
-        // ppm3.save("media/grayscale.ppm");
-
-
-
+        PPMImage ppm3("media/PPM_P3.ppm");
+        ppm3.grayscale();
+        ppm3.save("media/grayscale.ppm");
         
     } catch (...) { 
         // TODO

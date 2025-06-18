@@ -3,6 +3,7 @@
 
 NegativeCommand::NegativeCommand(Session* currentSession) 
     : Command(currentSession) {
+    instant = false;
 
 }
 
@@ -13,13 +14,4 @@ void NegativeCommand::execute() {
     }
 }
 
-void NegativeCommand::validate() const {
-    
-}
-
-void NegativeCommand::parse(const std::vector<std::string>& args) {
-
-}
-
-
-static CommandRegistrar<NegativeCommand> reg_negative("negative");
+static CommandRegistrar<NegativeCommand> reg_negative("negative", "Inverts the colors of all images in the current session.");

@@ -10,7 +10,8 @@ class SessionManager {
 
     void run();
 
-    bool addSession();
+    bool addSession(std::vector<std::string>& images);
+    void printHelpMessage() const;
     bool changeSession(unsigned int sessionId);
 
 

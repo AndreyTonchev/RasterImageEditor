@@ -3,6 +3,7 @@
 
 GrayscaleCommand::GrayscaleCommand(Session* currentSession) 
     : Command(currentSession) {
+    instant = false;
 
 }
 
@@ -13,12 +14,4 @@ void GrayscaleCommand::execute() {
     }
 }
 
-void GrayscaleCommand::validate() const {
-
-}
-
-void GrayscaleCommand::parse(const std::vector<std::string>& args) {
-
-}
-
-static CommandRegistrar<GrayscaleCommand> reg_grayscale("grayscale");
+static CommandRegistrar<GrayscaleCommand> reg_grayscale("grayscale", "Converts all images to shades of gray, removing all color information.");

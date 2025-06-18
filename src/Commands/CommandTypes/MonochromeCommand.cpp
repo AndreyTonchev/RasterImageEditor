@@ -3,7 +3,7 @@
 
 MonochromeCommand::MonochromeCommand(Session* currentSession) 
     : Command(currentSession) {
-
+    instant = false;
 }
 
 void MonochromeCommand::execute() {
@@ -13,12 +13,4 @@ void MonochromeCommand::execute() {
     }
 }
 
-void MonochromeCommand::validate() const {
-    
-}
-
-void MonochromeCommand::parse(const std::vector<std::string>& args) {
-
-}
-
-static CommandRegistrar<MonochromeCommand> reg_monochrome("monochrome");
+static CommandRegistrar<MonochromeCommand> reg_monochrome("monochrome", "Converts all images to pure black and white.");
