@@ -23,31 +23,20 @@ void SessionManager::run() {
         std::string cmdName = args[0];
         args.erase(args.begin());
 
-        if (cmdName == "help") {
-            printHelpMessage();
-        } 
-        else if (cmdName == "load") {
-            addSession(args);
-        }
-        else if (cmdName == "exit") {
-            if (false) {
-                // Check if everything is saved
-            }
-            isRunning = false;
-            break;
-        } else {
-
-        }
-
-
         Command* cmd = CommandFactory::create(cmdName, currentSession);
-        if (cmd) {
+        if (cmd && (currentSession || cmd->isInstant())) {
             try {
-                cmd->parse(args);
                 cmd->validate();
-                currentSession->addCommand(cmd);
+                cmd->parse(args);
+                if (cmd->isInstant()) {
+                    cmd->execute();
+                    delete cmd;
+                } 
+                else {
+                    currentSession->addCommand(cmd);
+                }
             } catch (const std::exception& e) {
-                std::cerr << "Command error: " << e.what() << "\n";
+                std::cerr << e.what() << "\n";
                 delete cmd;
             }
         }
@@ -55,8 +44,8 @@ void SessionManager::run() {
     } 
 }
 
-bool SessionManager::addSession(std::vector<std::string>& images) {
-    return true;
+bool SessionManager::addSession() {
+    
 }
 
 void SessionManager::printHelpMessage() const {

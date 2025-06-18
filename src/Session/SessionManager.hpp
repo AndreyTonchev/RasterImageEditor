@@ -6,11 +6,12 @@
 #include "Session.hpp"
 
 class SessionManager {
+public:   
     SessionManager();
 
     void run();
 
-    bool addSession(std::vector<std::string>& images);
+    bool addSession();
     void printHelpMessage() const;
     bool changeSession(unsigned int sessionId);
 

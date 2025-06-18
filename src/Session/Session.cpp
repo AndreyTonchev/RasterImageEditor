@@ -10,6 +10,7 @@ std::vector<Image*>& Command::getSessionImages(Session* s) {
 
 bool Session::addCommand(Command* cmd) {
     commands.push_back(cmd);
+    return true;
 }
 
 unsigned int Session::lastId = 1;

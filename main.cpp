@@ -32,18 +32,18 @@ int main() {
 
     
     try { 
-        
-        PPMImage ppm1("media/PPM_P3.ppm");
-        ppm1.negative();
-        ppm1.save("media/negative.ppm");
-        
-        PPMImage ppm2("media/PPM_P3.ppm");
-        ppm2.monochrome();
-        ppm2.save("media/monochrome.ppm");
 
-        PPMImage ppm3("media/PPM_P3.ppm");
-        ppm3.grayscale();
-        ppm3.save("media/grayscale.ppm");
+        // PPMImage ppm1("media/PPM_P3.ppm");
+        // ppm1.negative();
+        // ppm1.save("media/negative.ppm");
+        
+        // PPMImage ppm2("media/PPM_P3.ppm");
+        // ppm2.monochrome();
+        // ppm2.save("media/monochrome.ppm");
+
+        // PPMImage ppm3("media/PPM_P3.ppm");
+        // ppm3.grayscale();
+        // ppm3.save("media/grayscale.ppm");
         
     } catch (...) { 
         // TODO
