@@ -62,7 +62,7 @@ void PGMImage::print(std::ostream& os) const {
     os << signatureStr << std::endl;
     os << width << ' ' << height << std::endl;
     os << maxValue << std::endl;
-    os << pixels << std::endl;
+    pixels->printR0(os);
     
 }
 

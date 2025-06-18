@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Image.hpp"
 #include "../Pixels/TemplatePixel.hpp"
 #include "../utils/Exceptions.hpp"
 
@@ -18,7 +19,14 @@ public:
     AbstractPixel* at(std::size_t w, std::size_t h) override;
     const AbstractPixel* at(std::size_t w, std::size_t h) const override;
 
-    void print(std::ostream& os = std::cout) const override;
+    virtual void printR0(std::ostream& os = std::cout) const override;
+    virtual void printR90(std::ostream& os = std::cout) const override;
+    virtual void printR180(std::ostream& os = std::cout) const override;
+    virtual void printR270(std::ostream& os = std::cout) const override;
+    virtual void printMH(std::ostream& os = std::cout) const override;
+    virtual void printMV(std::ostream& os = std::cout) const override;
+    virtual void printDF(std::ostream& os = std::cout) const override;
+    virtual void printAD(std::ostream& os = std::cout) const override;
 
 public:
     virtual void negative() override;
@@ -26,7 +34,6 @@ public:
     virtual void monochrome() override;
 
 private:
-    Orientation orientation;
     int width;
     int height;
     int maxValue;
@@ -36,7 +43,7 @@ private:
 
 template <typename PixelType>
 PixelMatrix<PixelType>::PixelMatrix(std::size_t width, std::size_t height, std::size_t maxValue)
-    : orientation(Orientation::Rotate0), width(width), height(height), maxValue(maxValue), pixels(height, std::vector<PixelType>(width)) {
+    : width(width), height(height), maxValue(maxValue), pixels(height, std::vector<PixelType>(width)) {
 }
 
 template <typename PixelType>
@@ -93,43 +100,46 @@ void PixelMatrix<PixelType>::grayscale() {
 }
 
 template <typename PixelType>
-void PixelMatrix<PixelType>::print(std::ostream& os) const {
-
-    switch (orientation)
-    {
-    case Orientation::Rotate0 :
-        for (int h = 0; h < height; h++) {
-            for (int w = 0; w < width; w++) {
-                pixels[h][w].print(os);
-            }
-            os << std::endl;
-        } 
-        break;
-
-    case Orientation::Rotate90 :
-        for (int w = 0; w < width)
-        break;
-    case Orientation::Rotate180 :
-        break;
-    case Orientation::Rotate270 :
-        break;
-    case Orientation::MirrorHorizontal :
-        break;
-    case Orientation::MirrorVertical :
-        break;
-    case Orientation::DiagonalFlip :
-        break;
-    case Orientation::AntiDiagonalFlip :
-        break;
-    
-    default:
-        break;
-    }
-
-    for (std::size_t y = 0; y < height; y++) {
-        for (std::size_t x = 0; x < width; x++) {
-            pixels[y][x].print(os);
+void PixelMatrix<PixelType>::printR0(std::ostream& os) const {
+    for (int h = 0; h < height; h++) {
+        for (int w = 0; w < width; w++) {
+            pixels[h][w].print(os);
         }
         os << std::endl;
-    }
+    } 
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR90(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR180(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR270(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printMH(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printMV(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printDF(std::ostream& os) const {
+
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printAD(std::ostream& os) const {
+
 }

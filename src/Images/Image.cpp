@@ -39,9 +39,9 @@ void Image::save(const std::string& filename) const {
     file.close();
 }
 
-using O = Image::Orientation;
+using O = Orientation;
 
-Image::Orientation Image::orientationTable[8][8] = {
+Orientation Image::orientationTable[8][8] = {
     //        |   R0   |  R90   |  R180  |  R270  |   MH   |   MV   |   DF   |   AD   |
     /* R0  */ { O::R0,   O::R90,  O::R180, O::R270, O::MH,   O::MV,   O::DF,   O::AD },
     /* R90 */ { O::R90,  O::R180, O::R270, O::R0,   O::AD,   O::DF,   O::MV,   O::MH },

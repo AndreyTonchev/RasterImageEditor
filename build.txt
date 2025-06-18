@@ -1,0 +1,2 @@
+g++ -o main.exe main.cpp src/Pixels/PixelTypes/*.cpp src/Images/*.cpp src/Images/ImageTypes/*.cpp src/utils/*.cpp src/Commands/*.cpp src/Commands/CommandTypes/*.cpp src/Commands/CommandFactory/*.cpp src/Session/*.cpp  && valgrind --leak-check=full -s  ./main.exe
+valgrind --leak-check=full -s  ./main.exe

@@ -1,4 +1,5 @@
-
 #include <string>
 
-#include "../main/AbstractImage.hpp"
+namespace Utils {
+    
+}

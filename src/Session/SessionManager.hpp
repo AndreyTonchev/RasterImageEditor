@@ -17,4 +17,6 @@ class SessionManager {
 private:
     std::vector<Session*> sessions;
     Session* currentSession;
+
+    bool isRunning;
 };

@@ -10,6 +10,17 @@
 #include "AbstractPixelMatrix.hpp"
 #include "../utils/Exceptions.hpp"
        
+enum class Orientation {
+    NONE = -1,
+    R0,     // Rotate 0
+    R90,    // Rotate 90
+    R180,   // Rotate 180
+    R270,   // Rotate 270
+    MH,     // Mirror Horizontal
+    MV,     // Mirror Vertical
+    DF,     // Diagonal Flip
+    AD,     // Anti Diagonal Flip
+};
 
 class Image {
 public:
@@ -32,20 +43,6 @@ public:
     void grayscale();
     void monochrome();
     void save(const std::string& filename) const;
-
-public:
-    enum class Orientation {
-        NONE = -1,
-        R0,     // Rotate 0
-        R90,    // Rotate 90
-        R180,   // Rotate 180
-        R270,   // Rotate 270
-        MH,     // Mirror Horizontal
-        MV,     // Mirror Vertical
-        DF,     // Diagonal Flip
-        AD,     // Anti Diagonal Flip
-    };
-
     
 protected:
     std::string filename;
