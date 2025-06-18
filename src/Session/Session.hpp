@@ -8,7 +8,6 @@
 class Session {
 public:
 
-
 private:
     std::vector<Image*> images;
     std::vector<Command*> commands;
@@ -21,5 +20,5 @@ private:
     static unsigned int lastID;
     static unsigned int generateID();
 
-    friend std::vector<Image*>& Command::getSessionImages(Session&);
+    friend std::vector<Image*>& Command::getSessionImages(Session*);
 };
