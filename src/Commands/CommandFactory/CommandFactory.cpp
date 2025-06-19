@@ -20,7 +20,7 @@ Command* CommandFactory::create(const std::string& name, Session* session) {
         }
     }
 
-    return nullptr;
+    throw std::runtime_error("Command not found! Write 'help' to se the list of commands");
 }
 
 void CommandFactory::listCommands() {
