@@ -33,25 +33,38 @@ void SaveAsCommand::execute() {
         }
     }
 
+    std::string timestamp = Utils::getTimestamp();
+
     for (size_t i = 0; i < images.size(); ++i) {
-        std::string newFilename = Utils::newFileName(images[i].image->getFilename(), filenames[i]);
+        std::string newFilename;
+        
+        if (i < filenames.size()) {
+            newFilename = Utils::newFileName(images[i].image->getFilename(), filenames[i]);
+        } else {
+            std::string filename = Utils::getFileName(images[i].image->getFilename());
+            std::string extension = Utils::getExtension(images[i].image->getFilename());
+            std::string newName = filename + "_" + timestamp + "." + extension;
+
+            newFilename = Utils::newFileName(images[i].image->getFilename(), newName);
+        }
+
         try {
             images[i].image->save(newFilename);
         } catch (const std::exception& e) {
-            std::cerr << "Failed to save " << filenames[i] << ": " << e.what() << std::endl;
+            std::cerr << "Failed to save " << newFilename << ": " << e.what() << std::endl;
         }
         delete images[i].image;
         images[i] = tempImages[i];
         
-        std::cout << "Image " << filenames[i] << " saved successfully.\n";
+        std::cout << "Image " << newFilename << " saved successfully.\n";
     }
 
 }
     
 void SaveAsCommand::validate() const {
-    int filesAmmount = currentSession->getSessionImages().size();
-    if (filenames.size() != filesAmmount) {
-        throw CommandException("Invalid arguments count passed. Expected " + filesAmmount);
+    int filesAmount = currentSession->getSessionImages().size();
+    if (filenames.size() > filesAmount) {
+        throw CommandException("Invalid arguments count passed. Max Elements Expected " + filesAmount);
     }
 }
 

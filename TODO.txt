@@ -4,3 +4,6 @@
 - Add Session Manager destructor (Commands and images)
 - Command Manager
 - Save the unsaved upon exit
+- Validate stacking commands to throwm exception when there is no session
+- Skip comments in Image files
+- Fix Exit Command

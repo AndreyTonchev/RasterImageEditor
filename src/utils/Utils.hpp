@@ -7,4 +7,7 @@ namespace Utils {
     std::string getPath(const std::string& filename);
     std::string getFileName(const std::string& filename);
     std::string newFileName(const std::string& pathName, const std::string& newName);
+
+    std::string pad(int number);
+    std::string getTimestamp();
 }
