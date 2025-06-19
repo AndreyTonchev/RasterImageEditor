@@ -4,6 +4,23 @@ Session::Session()
     : id(generateId()) {
 }
 
+Session::~Session() {
+    // for (int i = 0; i < commands.size(); i++) {
+    //     delete commands[i];
+    // }
+
+    // for (int i = 0; i < undoCommands.size(); i++) {
+    //     delete undoCommands[i];
+    // }
+
+    for (int i = 0; i < images.size(); i++)
+    {
+        delete images[i].image;
+    }
+    
+    
+}
+
 std::vector<Session::SessionImage>& Session::getSessionImages() {
     return images;
 }

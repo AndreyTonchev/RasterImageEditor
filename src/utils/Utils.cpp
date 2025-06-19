@@ -33,10 +33,11 @@ namespace Utils {
 
     std::string newFileName(const std::string& pathName, const std::string& newName) {
         std::string path = getPath(pathName);
+        std::string extension = getExtension(pathName);
         return path + newName;
     }
 
-    std::string pad(int number) {
+        std::string pad(int number) {
         return (number < 10 ? "0" : "") + std::to_string(number);
     }
 
@@ -54,5 +55,5 @@ namespace Utils {
 
         return timestamp;
     }
-        
+    
 }

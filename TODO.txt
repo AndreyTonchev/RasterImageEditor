@@ -7,3 +7,4 @@
 - Validate stacking commands to throwm exception when there is no session
 - Skip comments in Image files
 - Fix Exit Command
+- CommandManager

@@ -7,7 +7,9 @@ Image::Image()
 Image::Image(const Image& other)
     : filename(other.filename), orientation(Orientation::R0), pixels(nullptr) {
     try {
-        pixels = other.pixels->clone();
+        if (other.pixels) {
+            pixels = other.pixels->clone();
+        }
     } catch (...) {
         delete pixels;
         throw;
@@ -16,10 +18,15 @@ Image::Image(const Image& other)
 
 Image& Image::operator=(const Image& other) {
     if (this != &other) {
+        AbstractPixelMatrix* newPixels = nullptr;
+        if (other.pixels) {
+            newPixels = other.pixels->clone();  // This might throw
+        }
+
         delete pixels;
+        pixels = newPixels;
         filename = other.filename;
         orientation = other.orientation;
-        pixels = other.pixels->clone();
     }
     return *this;
 }

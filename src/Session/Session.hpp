@@ -8,6 +8,7 @@
 class Session {
 public:
     Session();
+    ~Session();
 
     bool addCommand(Command* cmd);
     unsigned int getId() const { return id; }

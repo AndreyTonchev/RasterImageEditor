@@ -4,6 +4,7 @@
 #include "../../Session/SessionManager.hpp"
 #include "../../utils/Utils.hpp"
 #include "../../Images/AllImages.hpp"
+#include <iostream>
 
 LoadCommand::LoadCommand(Session* currentSession) 
     : Command(currentSession) {

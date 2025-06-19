@@ -1,0 +1,76 @@
+Raster Image Editor
+Write 'help' to list the commands
+> load media/PPM_P3.ppm media/grayscale.ppm 
+Session with ID: 1 started
+Loading image media/PPM_P3.ppm
+Image media/PPM_P3.ppm loaded successfully
+Loading image media/grayscale.ppm
+Image media/grayscale.ppm loaded successfully
+> rotate left
+> flip top 
+> save
+Image PPM_P3_20250620013827.ppm saved successfully.
+Image grayscale_20250620013829.ppm saved successfully.
+> load media/negative.ppm
+Session with ID: 2 started
+Loading image media/negative.ppm
+Image media/negative.ppm loaded successfully
+> rotate right
+> exit\
+Command not found! Write 'help' to see the list of available commands
+> exit
+==73210== 
+==73210== HEAP SUMMARY:
+==73210==     in use at exit: 13,117,988 bytes in 1,293 blocks
+==73210==   total heap usage: 2,262 allocs, 969 frees, 22,024,280 bytes allocated
+==73210== 
+==73210== 56 bytes in 1 blocks are definitely lost in loss record 4 of 13
+==73210==    at 0x4846FA3: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==73210==    by 0x114372: CommandRegistrar<FlipCommand>::create(Session*) const (CommandRegistrar.hpp:24)
+==73210==    by 0x110574: CommandFactory::create(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, Session*) (CommandFactory.cpp:19)
+==73210==    by 0x12C236: SessionManager::run() (SessionManager.cpp:32)
+==73210==    by 0x10EB42: main (main.cpp:35)
+==73210== 
+==73210== 112 bytes in 2 blocks are definitely lost in loss record 6 of 13
+==73210==    at 0x4846FA3: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==73210==    by 0x117820: CommandRegistrar<RotateCommand>::create(Session*) const (CommandRegistrar.hpp:24)
+==73210==    by 0x110574: CommandFactory::create(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, Session*) (CommandFactory.cpp:19)
+==73210==    by 0x12C236: SessionManager::run() (SessionManager.cpp:32)
+==73210==    by 0x10EB42: main (main.cpp:35)
+==73210== 
+==73210== 10,240 bytes in 1 blocks are possibly lost in loss record 8 of 13
+==73210==    at 0x4846FA3: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==73210==    by 0x1276CB: std::__new_allocator<RGBPixel8>::allocate(unsigned long, void const*) (new_allocator.h:151)
+==73210==    by 0x126FF0: allocate (alloc_traits.h:482)
+==73210==    by 0x126FF0: std::_Vector_base<RGBPixel8, std::allocator<RGBPixel8> >::_M_allocate(unsigned long) (stl_vector.h:381)
+==73210==    by 0x12691C: std::_Vector_base<RGBPixel8, std::allocator<RGBPixel8> >::_M_create_storage(unsigned long) (stl_vector.h:398)
+==73210==    by 0x126186: std::_Vector_base<RGBPixel8, std::allocator<RGBPixel8> >::_Vector_base(unsigned long, std::allocator<RGBPixel8> const&) (stl_vector.h:335)
+==73210==    by 0x127BDC: std::vector<RGBPixel8, std::allocator<RGBPixel8> >::vector(std::vector<RGBPixel8, std::allocator<RGBPixel8> > const&) (stl_vector.h:603)
+==73210==    by 0x127A92: void std::_Construct<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::vector<RGBPixel8, std::allocator<RGBPixel8> > const&>(std::vector<RGBPixel8, std::allocator<RGBPixel8> >*, std::vector<RGBPixel8, std::allocator<RGBPixel8> > const&) (stl_construct.h:119)
+==73210==    by 0x12AAD2: std::vector<RGBPixel8, std::allocator<RGBPixel8> >* std::__do_uninit_copy<__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*>(__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, __gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*) (stl_uninitialized.h:120)
+==73210==    by 0x12A9CF: std::vector<RGBPixel8, std::allocator<RGBPixel8> >* std::__uninitialized_copy<false>::__uninit_copy<__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*>(__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, __gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*) (stl_uninitialized.h:137)
+==73210==    by 0x12A96D: std::vector<RGBPixel8, std::allocator<RGBPixel8> >* std::uninitialized_copy<__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*>(__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, __gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*) (stl_uninitialized.h:185)
+==73210==    by 0x12A8B8: std::vector<RGBPixel8, std::allocator<RGBPixel8> >* std::__uninitialized_copy_a<__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*, std::vector<RGBPixel8, std::allocator<RGBPixel8> > >(__gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, __gnu_cxx::__normal_iterator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > const*, std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > >, std::vector<RGBPixel8, std::allocator<RGBPixel8> >*, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > >&) (stl_uninitialized.h:373)
+==73210==    by 0x12A5FF: std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > >::vector(std::vector<std::vector<RGBPixel8, std::allocator<RGBPixel8> >, std::allocator<std::vector<RGBPixel8, std::allocator<RGBPixel8> > > > const&) (stl_vector.h:606)
+==73210== 
+==73210== 4,372,615 (72 direct, 4,372,543 indirect) bytes in 1 blocks are definitely lost in loss record 11 of 13
+==73210==    at 0x4846FA3: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==73210==    by 0x114CD0: LoadCommand::execute() (LoadCommand.cpp:29)
+==73210==    by 0x12C2EF: SessionManager::run() (SessionManager.cpp:38)
+==73210==    by 0x10EB42: main (main.cpp:35)
+==73210== 
+==73210== 8,734,965 (144 direct, 8,734,821 indirect) bytes in 2 blocks are definitely lost in loss record 13 of 13
+==73210==    at 0x4846FA3: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==73210==    by 0x1259F8: PPMImage::clone() const (PPMImage.hpp:26)
+==73210==    by 0x11905B: SaveCommand::execute() (SaveCommand.cpp:32)
+==73210==    by 0x12C2EF: SessionManager::run() (SessionManager.cpp:38)
+==73210==    by 0x10EB42: main (main.cpp:35)
+==73210== 
+==73210== LEAK SUMMARY:
+==73210==    definitely lost: 384 bytes in 6 blocks
+==73210==    indirectly lost: 13,107,364 bytes in 1,286 blocks
+==73210==      possibly lost: 10,240 bytes in 1 blocks
+==73210==    still reachable: 0 bytes in 0 blocks
+==73210==         suppressed: 0 bytes in 0 blocks
+==73210== 
+==73210== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
