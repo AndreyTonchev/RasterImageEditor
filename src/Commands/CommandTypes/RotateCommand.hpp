@@ -4,13 +4,13 @@
 
 #include "../Command.hpp"
 
-class SaveAsCommand : public Command {
+class RotateCommand : public Command {
 public:
-    SaveAsCommand(Session* currentSession);
+    RotateCommand(Session* currentSession);
 
     virtual void execute() override;
     virtual void validate() const override;
     virtual void parse(const std::vector<std::string>& args) override;
 private:
-    std::vector<std::string> filenames;
+    std::string direction;
 };

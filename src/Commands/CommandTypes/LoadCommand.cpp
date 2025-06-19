@@ -40,7 +40,7 @@ void LoadCommand::execute() {
             sessionImages.push_back(newImage);
 
         } catch (const std::exception& e) {
-            std::cout << "Unable to load Image with name" << filenames[i] << " (" << e.what() <<")\n";
+            std::cout << "Unable to load Image with name " << filenames[i] << " (" << e.what() <<")\n";
             delete newImage;
         }
     }

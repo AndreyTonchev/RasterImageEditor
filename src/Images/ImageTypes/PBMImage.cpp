@@ -58,8 +58,8 @@ void PBMImage::print(std::ostream& os) const {
     std::string signatureStr = (signature == PBMSignature::P1) ? "P1" : "P4";
 
     os << signatureStr << std::endl;
-    os << width << height << std::endl;
-    pixels->printR0(os);
+    printDimensions(os);
+    printPixels(os);
     
 }
 

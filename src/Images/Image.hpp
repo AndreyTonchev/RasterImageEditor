@@ -36,7 +36,11 @@ public:
     std::string getFilename() const;
     
     virtual void print(std::ostream& os = std::cout) const = 0;
+    void printPixels(std::ostream& os = std::cout) const;
+    void printDimensions(std::ostream& os = std::cout) const;
 
+
+    void transformOrientation(Orientation apply);
     
     public:
     void negative();

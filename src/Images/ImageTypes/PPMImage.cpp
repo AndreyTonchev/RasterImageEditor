@@ -60,9 +60,9 @@ void PPMImage::print(std::ostream& os) const {
     std::string signatureStr = (signature == PPMSignature::P3) ? "P3" : "P6";
 
     os << signatureStr << std::endl;
-    os << width << ' ' << height << std::endl;
+    printDimensions(os);
     os << maxValue << std::endl;
-    pixels->printR0(os);
+    printPixels(os);
     
 }
 

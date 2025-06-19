@@ -61,9 +61,9 @@ void PGMImage::print(std::ostream& os) const {
     std::string signatureStr = (signature == PGMSignature::P2) ? "P2" : "P5";
 
     os << signatureStr << std::endl;
-    os << width << ' ' << height << std::endl;
+    printDimensions(os);
     os << maxValue << std::endl;
-    pixels->printR0(os);
+    printPixels(os);
     
 }
 

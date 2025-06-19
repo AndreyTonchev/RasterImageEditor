@@ -119,35 +119,70 @@ void PixelMatrix<PixelType>::printR0(std::ostream& os) const {
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printR90(std::ostream& os) const {
-
+    for (int w = 0; w < width; w++) {
+        for (int h = height - 1; h >= 0; h--) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printR180(std::ostream& os) const {
-
+    for (int w = 0; w < width; w++) {
+        for (int h = height - 1; h >= 0; h--) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printR270(std::ostream& os) const {
-
+    for (int w = width - 1; w >= 0; w--) {
+        for (int h = 0; h < height; h++) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printMH(std::ostream& os) const {
-
+    for (int h = 0; h < height; h++) {
+        for (int w = width - 1; w >= 0; w--) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printMV(std::ostream& os) const {
-
+    for (int h = height - 1; h >= 0; h--) {
+        for (int w = 0; w < width; w++) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printDF(std::ostream& os) const {
-
+    for (int w = 0; w < width; w++) {
+        for (int h = 0; h < height; h++) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printAD(std::ostream& os) const {
-
+    for (int w = width - 1; w >= 0; w--) {
+        for (int h = height - 1; h >= 0; h--) {
+            pixels[h][w].print(os);
+        }
+        os << std::endl;
+    }
 }

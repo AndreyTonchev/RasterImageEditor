@@ -34,7 +34,7 @@ void SaveAsCommand::execute() {
         }
         delete sessionImages[i];
         sessionImages[i] = tempImages[i];
-        std::cout << "Images" << filenames[i] << " saved successfully.\n";
+        std::cout << "Image " << filenames[i] << " saved successfully.\n";
     }
 
 }

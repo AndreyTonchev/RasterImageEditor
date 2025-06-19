@@ -24,6 +24,50 @@ Image& Image::operator=(const Image& other) {
     return *this;
 }
 
+void Image::printPixels(std::ostream& os) const {
+    switch (orientation) {
+        case Orientation::R0:
+            pixels->printR0(os);
+            break;
+        case Orientation::R90:
+            pixels->printR90(os);
+            break;
+        case Orientation::R180:
+            pixels->printR180(os);
+            break;
+        case Orientation::R270:
+            pixels->printR270(os);
+            break;
+        case Orientation::MH:
+            pixels->printMH(os);
+            break;
+        case Orientation::MV:
+            pixels->printMV(os);
+            break;
+        case Orientation::DF:
+            pixels->printDF(os);
+            break;
+        case Orientation::AD:
+            pixels->printAD(os);
+            break;
+        default:
+            os << "Unknown orientation\n";
+            break;
+    }
+}
+
+void Image::printDimensions(std::ostream& os) const {
+    if (orientation == Orientation::R90 ||
+        orientation == Orientation::R270 ||
+        orientation == Orientation::DF || 
+        orientation == Orientation::AD) {
+        os << pixels->getHeight() << ' ' << pixels->getWidth() << std::endl;
+    }
+    else {
+        os << pixels->getWidth() << ' ' << pixels->getHeight() << std::endl;
+    }
+}
+
 void Image::negative() {
     pixels->negative();
 }
@@ -64,6 +108,10 @@ void Image::save(const std::string& filename) const {
 }
 
 using O = Orientation;
+
+void Image::transformOrientation(Orientation apply) {
+    orientation = orientationTable[static_cast<int>(orientation)][static_cast<int>(apply)];
+}
 
 Orientation Image::orientationTable[8][8] = {
     //        |   R0   |  R90   |  R180  |  R270  |   MH   |   MV   |   DF   |   AD   |
