@@ -1,0 +1,3 @@
+- Image copy Constructor and operator=
+- Image Registrar factory
+- SaveAs exception safety. Delete temps and return to original state if exception is thrown

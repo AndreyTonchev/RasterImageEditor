@@ -1,7 +1,27 @@
 #include "Image.hpp"
 
 Image::Image()
-    : pixels(nullptr), filename("") {
+    : pixels(nullptr), filename(""), orientation(Orientation::R0) {
+}
+
+Image::Image(const Image& other)
+    : filename(other.filename), orientation(Orientation::R0), pixels(nullptr) {
+    try {
+        pixels = other.pixels->clone();
+    } catch (...) {
+        delete pixels;
+        throw;
+    } 
+}
+
+Image& Image::operator=(const Image& other) {
+    if (this != &other) {
+        delete pixels;
+        filename = other.filename;
+        orientation = other.orientation;
+        pixels = other.pixels->clone();
+    }
+    return *this;
 }
 
 void Image::negative() {
@@ -20,10 +40,14 @@ std::size_t Image::getWidth() const {
     return pixels->getWidth();
 }    
 
-
 std::size_t Image::getHeight() const {
     return pixels->getHeight();
 }    
+
+std::string Image::getFilename() const {
+    return filename;
+}
+
 
 void Image::save(const std::string& filename) const {
     if (filename == "") {

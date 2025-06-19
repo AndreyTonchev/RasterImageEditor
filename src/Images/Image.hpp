@@ -25,15 +25,15 @@ enum class Orientation {
 class Image {
 public:
     Image();
-
-    // TODO Cop and operator=
-
+    Image(const Image& other);
+    Image& operator=(const Image& other);
     virtual ~Image() noexcept { delete pixels; };
     
     virtual Image* clone() const = 0;
 
     std::size_t getWidth() const;
     std::size_t getHeight() const;
+    std::string getFilename() const;
     
     virtual void print(std::ostream& os = std::cout) const = 0;
 
@@ -48,5 +48,6 @@ protected:
     std::string filename;
     AbstractPixelMatrix* pixels;
     Orientation orientation;
+
     static Orientation orientationTable[8][8];
 };

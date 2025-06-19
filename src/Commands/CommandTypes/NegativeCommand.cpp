@@ -1,5 +1,6 @@
 #include "NegativeCommand.hpp"
 #include "../CommandFactory/CommandRegistrar.hpp"
+#include "../../Session/Session.hpp"
 
 NegativeCommand::NegativeCommand(Session* currentSession) 
     : Command(currentSession) {
@@ -8,7 +9,7 @@ NegativeCommand::NegativeCommand(Session* currentSession)
 }
 
 void NegativeCommand::execute() {
-    std::vector<Image*> images = getSessionImages(currentSession);
+    std::vector<Image*>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
         images[i]->negative();
     }

@@ -15,6 +15,9 @@ public:
     virtual AbstractPixel* at(std::size_t w, std::size_t h) = 0;
     virtual const AbstractPixel* at(std::size_t w, std::size_t h) const = 0;
 
+    virtual AbstractPixelMatrix* clone() const = 0;
+
+public:
     virtual void printR0(std::ostream& os = std::cout) const = 0;
     virtual void printR90(std::ostream& os = std::cout) const = 0;
     virtual void printR180(std::ostream& os = std::cout) const = 0;

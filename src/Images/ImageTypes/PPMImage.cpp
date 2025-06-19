@@ -7,9 +7,8 @@ PPMImage::PPMImage()
     : Image(), signature(PPMSignature::NONE), maxValue(-1), width(0), height(0) {
 }
 
-PPMImage::PPMImage(const std::string& filename) 
-     {
-
+PPMImage::PPMImage(const std::string& filename) {
+    this->filename = filename;
     std::ifstream file;
     try {
         if (filename == "") {

@@ -4,8 +4,12 @@ Session::Session()
     : id(generateId()) {
 }
 
-std::vector<Image*>& Command::getSessionImages(Session* s) {
-    return s->images;
+std::vector<Image*>& Session::getSessionImages() {
+    return images;
+}
+
+std::vector<Command*>& Session::getSessionCommands() {
+    return commands;
 }
 
 bool Session::addCommand(Command* cmd) {

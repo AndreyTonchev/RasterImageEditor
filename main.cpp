@@ -34,7 +34,10 @@ int main() {
 
         SessionManager::getInstance().run();
 
-        // std::cout << Utils::getExtension("Filen.ame.hpp");
+        // std::cout << Utils::getExtension("/home/user/test/photo.ppm") << std::endl;
+        // std::cout << Utils::getFileName("/home/user/test/photo.ppm") << std::endl;
+        // std::cout << Utils::getPath("/home/user/test/photo.ppm") << std::endl;
+        // std::cout << Utils::newFileName("/home/user/test/photo.ppm", "newPhoto.ppm") << std::endl;
 
         // PPMImage ppm1("media/PPM_P3.ppm");
         // ppm1.negative();

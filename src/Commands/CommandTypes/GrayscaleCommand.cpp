@@ -1,5 +1,6 @@
 #include "GrayscaleCommand.hpp"
 #include "../CommandFactory/CommandRegistrar.hpp"
+#include "../../Session/Session.hpp"
 
 GrayscaleCommand::GrayscaleCommand(Session* currentSession) 
     : Command(currentSession) {
@@ -8,7 +9,7 @@ GrayscaleCommand::GrayscaleCommand(Session* currentSession)
 }
 
 void GrayscaleCommand::execute() {
-    std::vector<Image*> images = getSessionImages(currentSession);
+    std::vector<Image*>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
         images[i]->grayscale();
     }

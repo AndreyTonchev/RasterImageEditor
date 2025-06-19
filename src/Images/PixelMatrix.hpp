@@ -13,12 +13,15 @@ class PixelMatrix : public AbstractPixelMatrix {
 public:
     PixelMatrix(std::size_t width, std::size_t height, std::size_t maxValue);
 
-    std::size_t getWidth() const override;
-    std::size_t getHeight() const override;
+    virtual std::size_t getWidth() const override;
+    virtual std::size_t getHeight() const override;
     
-    AbstractPixel* at(std::size_t w, std::size_t h) override;
-    const AbstractPixel* at(std::size_t w, std::size_t h) const override;
+    virtual AbstractPixel* at(std::size_t w, std::size_t h) override;
+    virtual const AbstractPixel* at(std::size_t w, std::size_t h) const override;
 
+    virtual AbstractPixelMatrix* clone() const override;
+
+public:
     virtual void printR0(std::ostream& os = std::cout) const override;
     virtual void printR90(std::ostream& os = std::cout) const override;
     virtual void printR180(std::ostream& os = std::cout) const override;
@@ -54,6 +57,11 @@ std::size_t PixelMatrix<PixelType>::getHeight() const {
 template <typename PixelType>
 std::size_t PixelMatrix<PixelType>::getWidth() const {
     return width;
+}
+
+template <typename PixelType>
+AbstractPixelMatrix* PixelMatrix<PixelType>::clone() const {
+    return new PixelMatrix<PixelType>(*this);
 }
 
 template <typename PixelType>

@@ -13,7 +13,7 @@ LoadCommand::LoadCommand(Session* currentSession)
 void LoadCommand::execute() {
     Session newSession;
     std::cout << "Session with ID: " << newSession.getId() << " started" << std::endl; 
-    std::vector<Image*> sessionImages = getSessionImages(&newSession);
+    std::vector<Image*>& sessionImages = newSession.getSessionImages();
 
     for (int i = 0; i < filenames.size(); i++) {
         std::cout << "Loading image " << filenames[i] << '\n';
@@ -33,7 +33,7 @@ void LoadCommand::execute() {
                 newImage = new PBMImage(filenames[i]);
             }
             else {
-                throw CommandException("");
+                throw CommandException("Invalid File Extension");
             }
 
             std::cout << "Image " << filenames[i] << " loaded successfully\n";

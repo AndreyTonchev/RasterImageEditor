@@ -1,5 +1,6 @@
 #include "MonochromeCommand.hpp"
 #include "../CommandFactory/CommandRegistrar.hpp"
+#include "../../Session/Session.hpp"
 
 MonochromeCommand::MonochromeCommand(Session* currentSession) 
     : Command(currentSession) {
@@ -7,7 +8,7 @@ MonochromeCommand::MonochromeCommand(Session* currentSession)
 }
 
 void MonochromeCommand::execute() {
-    std::vector<Image*> images = getSessionImages(currentSession);
+    std::vector<Image*>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
         images[i]->monochrome();
     }

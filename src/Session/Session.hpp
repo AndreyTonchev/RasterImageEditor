@@ -12,6 +12,9 @@ public:
     bool addCommand(Command* cmd);
     unsigned int getId() const { return id; }
 
+    std::vector<Image*>& getSessionImages();
+    std::vector<Command*>& getSessionCommands();
+
 private:
     std::vector<Image*> images;
     std::vector<Command*> commands;
@@ -22,6 +25,4 @@ private:
 private:
     static unsigned int lastId;
     static unsigned int generateId();
-
-    friend std::vector<Image*>& Command::getSessionImages(Session*);
 };

@@ -9,6 +9,7 @@ PBMImage::PBMImage()
 
 PBMImage::PBMImage(const std::string& filename) {
     std::ifstream file;
+    this->filename = filename;
     try {
         if (filename == "") {
             throw FileException("Bad File Name.");

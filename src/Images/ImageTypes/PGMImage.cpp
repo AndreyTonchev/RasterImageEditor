@@ -10,6 +10,7 @@ PGMImage::PGMImage()
 }
 
 PGMImage::PGMImage(const std::string& filename) {
+    this->filename = filename;
     std::ifstream file;
     try {
 
