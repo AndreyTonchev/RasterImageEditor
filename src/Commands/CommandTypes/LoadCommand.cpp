@@ -14,7 +14,7 @@ void LoadCommand::execute() {
     Session newSession;
     std::cout << "Session with ID: " << newSession.getId() << " started" << std::endl; 
 
-    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
+    std::vector<Session::SessionImage>& images = newSession.getSessionImages();
 
     for (int i = 0; i < filenames.size(); i++) {
         std::cout << "Loading image " << filenames[i] << '\n';

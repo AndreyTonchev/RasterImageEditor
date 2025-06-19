@@ -1,3 +1,6 @@
 - Image Registrar factory
 - SaveAs exception safety. Delete temps and return to original state if exception is thrown
 - better Function Description
+- Add Session Manager destructor (Commands and images)
+- Command Manager
+- Save the unsaved upon exit

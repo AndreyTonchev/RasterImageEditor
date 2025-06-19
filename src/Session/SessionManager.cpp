@@ -46,6 +46,12 @@ void SessionManager::run() {
                 delete cmd;
             }
         }
+        else if (!cmd) {
+            std::cout << "Command not found! Write 'help' to see the list of available commands\n";
+        }
+        else {
+            std::cout << "You need to load a Session First\n";
+        }
 
     } 
 }
@@ -53,6 +59,10 @@ void SessionManager::run() {
 bool SessionManager::addSession(const Session& newSession) {
     sessions.push_back(newSession);
     return true;
+}
+
+std::vector<Session>& SessionManager::getSessions() {
+    return sessions;
 }
 
 bool SessionManager::changeSession(int sessionId) {

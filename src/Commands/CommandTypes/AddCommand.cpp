@@ -10,7 +10,7 @@ AddCommand::AddCommand(Session* currentSession)
 }
 
 void AddCommand::execute() {
-    imagePair->status = Session::Status::Loaded;
+    sessionImage->status = Session::Status::Loaded;
 }
 
 void AddCommand::parse(const std::vector<std::string>& args) {
@@ -38,6 +38,7 @@ void AddCommand::parse(const std::vector<std::string>& args) {
         }
 
         images.emplace_back(image, Session::Status::PendingLoad);
+        sessionImage = &images[images.size() - 1];
         std::cout << "Image " << args[0] << " added successfully\n";
 
     } catch (const std::exception& e) {

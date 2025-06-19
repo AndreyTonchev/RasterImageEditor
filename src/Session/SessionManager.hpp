@@ -15,10 +15,14 @@ public:
 
     void run();
 
-    bool addSession(const Session& newSession);
-
-    bool changeSession(int sessionId);
+    
     Session* getCurrentSession() const { return currentSession; }
+    std::vector<Session>& getSessions();
+    
+    bool addSession(const Session& newSession);
+    bool changeSession(int sessionId);
+
+    inline void setIsRunning(bool value) { isRunning = value; }
 
 private:
     SessionManager();

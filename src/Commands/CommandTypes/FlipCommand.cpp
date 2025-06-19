@@ -39,4 +39,4 @@ void FlipCommand::parse(const std::vector<std::string>& args) {
     direction = args[0];
 }
 
-static CommandRegistrar<FlipCommand> reg_negative("flip", "fli <left / right / top / bottom>\n - Morrors the image on the x or y axis");
+static CommandRegistrar<FlipCommand> reg_negative("flip", "flip <left / right / top / bottom> - Mirrors the image on the x or y axis");

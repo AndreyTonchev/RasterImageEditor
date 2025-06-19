@@ -129,8 +129,8 @@ void PixelMatrix<PixelType>::printR90(std::ostream& os) const {
 
 template <typename PixelType>
 void PixelMatrix<PixelType>::printR180(std::ostream& os) const {
-    for (int w = 0; w < width; w++) {
-        for (int h = height - 1; h >= 0; h--) {
+    for (int h = height - 1; h >= 0; h--) {
+        for (int w = width - 1 ; w >= 0; w--) {
             pixels[h][w].print(os);
         }
         os << std::endl;
