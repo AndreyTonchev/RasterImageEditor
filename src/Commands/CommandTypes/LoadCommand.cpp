@@ -13,7 +13,8 @@ LoadCommand::LoadCommand(Session* currentSession)
 void LoadCommand::execute() {
     Session newSession;
     std::cout << "Session with ID: " << newSession.getId() << " started" << std::endl; 
-    std::vector<Image*>& sessionImages = newSession.getSessionImages();
+
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
 
     for (int i = 0; i < filenames.size(); i++) {
         std::cout << "Loading image " << filenames[i] << '\n';
@@ -37,7 +38,7 @@ void LoadCommand::execute() {
             }
 
             std::cout << "Image " << filenames[i] << " loaded successfully\n";
-            sessionImages.push_back(newImage);
+            images.emplace_back(newImage, Session::Status::Loaded);
 
         } catch (const std::exception& e) {
             std::cout << "Unable to load Image with name " << filenames[i] << " (" << e.what() <<")\n";
@@ -45,7 +46,7 @@ void LoadCommand::execute() {
         }
     }
 
-    if (sessionImages.empty()) {
+    if (images.empty()) {
         throw CommandException("Unable to add Session. Not enough valid image files passed");
     }
 

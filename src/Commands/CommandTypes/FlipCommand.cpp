@@ -8,13 +8,19 @@ FlipCommand::FlipCommand(Session* currentSession)
 }
 
 void FlipCommand::execute() {
-    std::vector<Image*>& images = currentSession->getSessionImages();
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
-        if (direction == "top" || direction == "bottom") {
-            images[i]->transformOrientation(Orientation::MH);
-        } 
-        else if (direction == "right" || direction == "left") {
-            images[i]->transformOrientation(Orientation::MV);
+        if (images[i].status == Session::Status::PendingLoad) {
+
+            if (direction == "top" || direction == "bottom") {
+                images[i].image->transformOrientation(Orientation::MH);
+            } 
+
+            else if (direction == "right" || direction == "left") {
+                images[i].image->transformOrientation(Orientation::MV);
+            }
+
+            images[i].status = Session::Status::Modified;
         }
     } 
 }

@@ -10,12 +10,7 @@ AddCommand::AddCommand(Session* currentSession)
 }
 
 void AddCommand::execute() {
-    std::vector<Image*>& images = currentSession->getSessionImages();
-    images.push_back(image);
-}
-
-void AddCommand::validate() const {
-    
+    imagePair->status = Session::Status::Loaded;
 }
 
 void AddCommand::parse(const std::vector<std::string>& args) {
@@ -23,6 +18,9 @@ void AddCommand::parse(const std::vector<std::string>& args) {
         throw CommandException("Invalid arguments count passed. Expected 1");
     }
 
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
+    
+    Image* image = nullptr;
     try {
         std::string extension = Utils::getExtension(args[0]);
 
@@ -39,6 +37,7 @@ void AddCommand::parse(const std::vector<std::string>& args) {
             throw CommandException("Invalid File Extension");
         }
 
+        images.emplace_back(image, Session::Status::PendingLoad);
         std::cout << "Image " << args[0] << " added successfully\n";
 
     } catch (const std::exception& e) {

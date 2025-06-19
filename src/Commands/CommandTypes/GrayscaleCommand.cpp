@@ -9,9 +9,12 @@ GrayscaleCommand::GrayscaleCommand(Session* currentSession)
 }
 
 void GrayscaleCommand::execute() {
-    std::vector<Image*>& images = currentSession->getSessionImages();
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
-        images[i]->grayscale();
+        if (images[i].status != Session::Status::PendingLoad) {
+            images[i].image->grayscale();
+            images[i].status == Session::Status::Modified;
+        }
     }
 }
 

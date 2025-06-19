@@ -12,16 +12,32 @@ public:
     bool addCommand(Command* cmd);
     unsigned int getId() const { return id; }
 
-    std::vector<Image*>& getSessionImages();
+
+public: 
+    enum class Status {
+        PendingLoad,
+        Loaded,
+        Modified,
+        Saved
+    };
+
+    struct SessionImage {
+        Image* image;
+        Status status;
+        
+        SessionImage(Image* img, Status status);
+    };
+    
+    std::vector<SessionImage>& getSessionImages();
     std::vector<Command*>& getSessionCommands();
 
 private:
-    std::vector<Image*> images;
+    std::vector<SessionImage> images;
     std::vector<Command*> commands;
     std::vector<Command*> undoCommands;
 
     unsigned int id;
-    
+
 private:
     static unsigned int lastId;
     static unsigned int generateId();

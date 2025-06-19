@@ -4,7 +4,7 @@ Session::Session()
     : id(generateId()) {
 }
 
-std::vector<Image*>& Session::getSessionImages() {
+std::vector<Session::SessionImage>& Session::getSessionImages() {
     return images;
 }
 
@@ -15,6 +15,10 @@ std::vector<Command*>& Session::getSessionCommands() {
 bool Session::addCommand(Command* cmd) {
     commands.push_back(cmd);
     return true;
+}
+
+Session::SessionImage::SessionImage(Image* image, Status status) 
+    : image(image), status(status) {
 }
 
 unsigned int Session::lastId = 1;

@@ -9,9 +9,12 @@ NegativeCommand::NegativeCommand(Session* currentSession)
 }
 
 void NegativeCommand::execute() {
-    std::vector<Image*>& images = currentSession->getSessionImages();
+        std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
-        images[i]->negative();
+        if (images[i].status != Session::Status::PendingLoad) {
+            images[i].image->negative();
+            images[i].status == Session::Status::Modified;
+        }
     }
 }
 

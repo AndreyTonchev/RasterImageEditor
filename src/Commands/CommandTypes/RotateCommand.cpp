@@ -8,13 +8,17 @@ RotateCommand::RotateCommand(Session* currentSession)
 }
 
 void RotateCommand::execute() {
-    std::vector<Image*>& images = currentSession->getSessionImages();
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
-        if (direction == "left") {
-            images[i]->transformOrientation(Orientation::R90);
-        } 
-        else if (direction == "right") {
-            images[i]->transformOrientation(Orientation::R270);
+        if (images[i].status != Session::Status::PendingLoad) {
+            if (direction == "left") {
+                images[i].image->transformOrientation(Orientation::R90);
+            } 
+            else if (direction == "right") {
+                images[i].image->transformOrientation(Orientation::R270);
+            }
+            
+            images[i].status = Session::Status::Modified;
         }
     } 
 }

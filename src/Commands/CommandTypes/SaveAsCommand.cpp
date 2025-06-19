@@ -9,12 +9,20 @@ SaveAsCommand::SaveAsCommand(Session* currentSession)
 }
 
 void SaveAsCommand::execute() {
-    std::vector<Image*>& sessionImages = currentSession->getSessionImages();
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     std::vector<Command*>& sessionCommands = currentSession->getSessionCommands();
 
-    std::vector<Image*> tempImages;
-    for (size_t i = 0; i < sessionImages.size(); ++i) {
-        tempImages.push_back(sessionImages[i]->clone());
+    std::vector<Session::SessionImage> tempImages;
+    for (size_t i = 0; i < images.size(); ++i) {
+
+        Image* tempImage = images[i].image->clone();
+
+        Session::Status newStatus = 
+            (images[i].status == Session::Status::PendingLoad) 
+            ? Session::Status::PendingLoad 
+            : Session::Status::Saved;
+
+        tempImages.emplace_back(tempImage, newStatus);
     }
 
     for (size_t i = 0; i < sessionCommands.size(); ++i) {
@@ -25,15 +33,16 @@ void SaveAsCommand::execute() {
         }
     }
 
-    for (size_t i = 0; i < sessionImages.size(); ++i) {
-        std::string newFilename = Utils::newFileName(sessionImages[i]->getFilename(), filenames[i]);
+    for (size_t i = 0; i < images.size(); ++i) {
+        std::string newFilename = Utils::newFileName(images[i].image->getFilename(), filenames[i]);
         try {
-            sessionImages[i]->save(newFilename);
+            images[i].image->save(newFilename);
         } catch (const std::exception& e) {
             std::cerr << "Failed to save " << filenames[i] << ": " << e.what() << std::endl;
         }
-        delete sessionImages[i];
-        sessionImages[i] = tempImages[i];
+        delete images[i].image;
+        images[i] = tempImages[i];
+        
         std::cout << "Image " << filenames[i] << " saved successfully.\n";
     }
 
