@@ -1,11 +1,10 @@
 #include <iostream>
 
-#include "src/Images/ImageTypes/PGMImage.hpp"
-#include "src/Images/ImageTypes/PBMImage.hpp"
-#include "src/Images/ImageTypes/PPMImage.hpp"
-
-#include "src/utils/utils.cpp"
+#include "src/Images/AllImages.hpp"
+#include "src/utils/Utils.hpp"
 #include "src/Commands/AllComands.hpp"
+
+#include "src/Session/SessionManager.hpp"
 
 
 
@@ -33,6 +32,10 @@ int main() {
     
     try { 
 
+        SessionManager::getInstance().run();
+
+        // std::cout << Utils::getExtension("Filen.ame.hpp");
+
         // PPMImage ppm1("media/PPM_P3.ppm");
         // ppm1.negative();
         // ppm1.save("media/negative.ppm");
@@ -45,8 +48,8 @@ int main() {
         // ppm3.grayscale();
         // ppm3.save("media/grayscale.ppm");
         
-    } catch (...) { 
-        // TODO
+    } catch (const std::exception& e) { 
+        std::cerr << e.what();
     }
 
     return 0;

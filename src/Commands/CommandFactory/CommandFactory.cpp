@@ -24,7 +24,7 @@ Command* CommandFactory::create(const std::string& name, Session* session) {
 }
 
 void CommandFactory::listCommands() {
-    std::cout << "Image Commands:";
+    std::cout << "Image Commands:\n";
     std::vector<CommandEntry>& registry = getRegistry();
     for (size_t i = 0; i < registry.size(); i++) {
         std::cout << "  " << registry[i].name << " - " << registry[i].description << '\n';

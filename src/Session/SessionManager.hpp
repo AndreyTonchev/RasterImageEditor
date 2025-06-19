@@ -7,18 +7,24 @@
 
 class SessionManager {
 public:   
-    SessionManager();
+    static SessionManager& getInstance();
+    SessionManager(const SessionManager& other) = delete;
+    SessionManager& operator=(const SessionManager& other) = delete;
+    SessionManager(const SessionManager&& other) = delete;
+    SessionManager& operator=(const SessionManager&& other) = delete;
 
     void run();
 
-    bool addSession();
-    void printHelpMessage() const;
-    bool changeSession(unsigned int sessionId);
+    bool addSession(const Session& newSession);
 
+    bool changeSession(int sessionId);
+    Session* getCurrentSession() const { return currentSession; }
 
 private:
-    std::vector<Session*> sessions;
-    Session* currentSession;
+    SessionManager();
 
+private:
+    std::vector<Session> sessions;
+    Session* currentSession; 
     bool isRunning;
 };

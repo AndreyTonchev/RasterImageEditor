@@ -1,13 +1,19 @@
 #include "SessionManager.hpp"
 #include "../Commands/CommandFactory/CommandFactory.hpp"
 
+SessionManager& SessionManager::getInstance() {
+    static SessionManager instance;
+    return instance;
+}
+
 SessionManager::SessionManager() 
     : currentSession(nullptr), isRunning(false) {
-
 }
 
 void SessionManager::run() {
     isRunning = true;
+    std::cout << "Raster Image Editor\n" 
+              << "Write 'help' to list the commands\n";      
 
     while (isRunning) {
         std::cout << "> ";
@@ -26,8 +32,8 @@ void SessionManager::run() {
         Command* cmd = CommandFactory::create(cmdName, currentSession);
         if (cmd && (currentSession || cmd->isInstant())) {
             try {
-                cmd->validate();
                 cmd->parse(args);
+                cmd->validate();
                 if (cmd->isInstant()) {
                     cmd->execute();
                     delete cmd;
@@ -44,10 +50,17 @@ void SessionManager::run() {
     } 
 }
 
-bool SessionManager::addSession() {
-    
+bool SessionManager::addSession(const Session& newSession) {
+    sessions.push_back(newSession);
+    return true;
 }
 
-void SessionManager::printHelpMessage() const {
-    std::cout << "help - ";
+bool SessionManager::changeSession(int sessionId) {
+    for (int i = 0; i < sessions.size(); i++) {
+        if (sessions[i].getId() == sessionId) {
+            currentSession = &sessions[i];
+            return true;
+        }
+    }
+    return false;
 }

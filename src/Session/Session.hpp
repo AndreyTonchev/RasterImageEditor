@@ -10,6 +10,7 @@ public:
     Session();
 
     bool addCommand(Command* cmd);
+    unsigned int getId() const { return id; }
 
 private:
     std::vector<Image*> images;

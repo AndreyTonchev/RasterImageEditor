@@ -6,6 +6,7 @@
 #include "../Images/Image.hpp"
 
 class Session;
+class SessionManager;
 
 class Command {
 public:
@@ -20,13 +21,15 @@ public:
     bool isInstant() const;
     
     std::vector<Image*>& getSessionImages(Session* s);
-
+public:
     static std::vector<std::string> split(const std::string& str);
 
 protected:
     bool instant;
     Session* currentSession;
 };
+
+
 
 class CommandException : public std::exception {
 protected:

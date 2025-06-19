@@ -5,7 +5,7 @@ Session::Session()
 }
 
 std::vector<Image*>& Command::getSessionImages(Session* s) {
-    return s->images; // Accessing private member of Session
+    return s->images;
 }
 
 bool Session::addCommand(Command* cmd) {
