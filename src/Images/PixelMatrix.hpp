@@ -8,42 +8,138 @@
 #include "../Pixels/TemplatePixel.hpp"
 #include "../utils/Exceptions.hpp"
 
-
+/**
+ * @class PixelMatrix
+ * @brief Templated concrete implementation of AbstractPixelMatrix for storing and manipulating 2D pixel grids.
+ * 
+ * @tparam PixelType A class derived from AbstractPixel that implements pixel behavior.
+ */
 template <typename PixelType>
 class PixelMatrix : public AbstractPixelMatrix {
 public:
+    /**
+     * @brief Constructs a PixelMatrix with the given dimensions and maximum pixel value.
+     * 
+     * @param width Width of the image.
+     * @param height Height of the image.
+     * @param maxValue Maximum pixel value (for color depth).
+     */
     PixelMatrix(std::size_t width, std::size_t height, std::size_t maxValue);
 
+    /**
+     * @brief Returns the width of the pixel matrix.
+     * @return Matrix width.
+     */
     virtual std::size_t getWidth() const override;
+
+    /**
+     * @brief Returns the height of the pixel matrix.
+     * @return Matrix height.
+     */
     virtual std::size_t getHeight() const override;
+
+    /**
+     * @brief Resizes the pixel matrix to new dimensions, preserving overlapping pixels.
+     * 
+     * @param newWidth New width.
+     * @param newHeight New height.
+     */
     virtual void resize(std::size_t newWidth, std::size_t newHeight) override;
-    
+
+    /**
+     * @brief Provides mutable access to the pixel at the given position.
+     * 
+     * @param w Column index.
+     * @param h Row index.
+     * @return Pointer to the pixel.
+     */
     virtual AbstractPixel* at(std::size_t w, std::size_t h) override;
+
+    /**
+     * @brief Provides constant access to the pixel at the given position.
+     * 
+     * @param w Column index.
+     * @param h Row index.
+     * @return Const pointer to the pixel.
+     */
     virtual const AbstractPixel* at(std::size_t w, std::size_t h) const override;
 
+    /**
+     * @brief Clones the pixel matrix (deep copy).
+     * @return Pointer to the new PixelMatrix object.
+     */
     virtual AbstractPixelMatrix* clone() const override;
 
 public:
+    /**
+     * @brief Prints the matrix in its original orientation (0°).
+     * @param os Output stream.
+     */
     virtual void printR0(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 90° clockwise.
+     * @param os Output stream.
+     */
     virtual void printR90(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 180°.
+     * @param os Output stream.
+     */
     virtual void printR180(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 270° clockwise.
+     * @param os Output stream.
+     */
     virtual void printR270(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix mirrored horizontally.
+     * @param os Output stream.
+     */
     virtual void printMH(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix mirrored vertically.
+     * @param os Output stream.
+     */
     virtual void printMV(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix flipped across the main diagonal.
+     * @param os Output stream.
+     */
     virtual void printDF(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix flipped across the anti-diagonal.
+     * @param os Output stream.
+     */
     virtual void printAD(std::ostream& os = std::cout) const override;
 
 public:
+    /**
+     * @brief Applies a negative filter to all pixels.
+     */
     virtual void negative() override;
+
+    /**
+     * @brief Converts all pixels to grayscale.
+     */
     virtual void grayscale() override;
+
+    /**
+     * @brief Converts all pixels to monochrome (black or white).
+     */
     virtual void monochrome() override;
 
 private:
-    int width;
-    int height;
-    int maxValue;
-    std::vector<std::vector<PixelType>> pixels;
-    
+    int width;          ///< Width of the matrix.
+    int height;         ///< Height of the matrix.
+    int maxValue;       ///< Maximum color value.
+    std::vector<std::vector<PixelType>> pixels; ///< 2D container of pixels.
 };
 
 template <typename PixelType>

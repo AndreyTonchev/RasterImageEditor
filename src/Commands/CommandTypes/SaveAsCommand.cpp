@@ -31,23 +31,25 @@ void SaveAsCommand::execute() {
 
     for (size_t i = 0; i < images.size(); ++i) {
         std::string newFilename;
+        std::string newName;
         
         if (i < filenames.size()) {
             newFilename = Utils::newFileName(images[i].image->getFilename(), filenames[i]);
         } else {
-            std::string newFilename = Utils::getTimestampedName(images[i].image->getFilename());
-            std::string newName = Utils::getFileName(newFilename);
+            newFilename = Utils::getTimestampedName(images[i].image->getFilename());
+            newName = Utils::getFileName(newFilename);
+
         }
 
         try {
             images[i].image->save(newFilename);
         } catch (const std::exception& e) {
-            std::cerr << "Failed to save " << newFilename << ": " << e.what() << std::endl;
+            std::cerr << "Failed to save " << newName << ": " << e.what() << std::endl;
         }
         delete images[i].image;
         images[i] = tempImages[i];
         
-        std::cout << "Image " << newFilename << " saved successfully.\n";
+        std::cout << "Image " << newName << " saved successfully.\n";
     }
 
 }

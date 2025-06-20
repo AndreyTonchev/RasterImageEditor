@@ -7,27 +7,71 @@
 #include "../utils/Exceptions.hpp"
 #include "AbstractPixel.hpp"
 
-
+/**
+ * @brief A templated pixel implementation supporting arbitrary data types and number of channels.
+ * 
+ * @tparam DataType The underlying data type for each channel (e.g., uint8_t, uint16_t).
+ * @tparam Channels The number of channels (e.g., 1 for grayscale, 3 for RGB).
+ */
 template <typename DataType, std::size_t Channels>
 class TemplatePixel : public AbstractPixel {
 public:
+    /**
+     * @brief Constructs a pixel with all channels initialized to zero.
+     */
     TemplatePixel();
+
+    /**
+     * @brief Virtual destructor.
+     */
     virtual ~TemplatePixel() noexcept = default;
 
+    /**
+     * @brief Create a deep copy of this pixel.
+     * 
+     * @return A pointer to the newly cloned pixel.
+     */
     virtual AbstractPixel* clone() const = 0;
 
+    /**
+     * @copydoc AbstractPixel::setChannel
+     */
     virtual void setChannel(std::size_t channel, uint32_t value) override;
+
+    /**
+     * @copydoc AbstractPixel::getChannel
+     */
     virtual uint32_t getChannel(std::size_t channel) const override;
 
+    /**
+     * @copydoc AbstractPixel::print
+     */
     virtual void print(std::ostream& os = std::cout) const override;
+
+    /**
+     * @copydoc AbstractPixel::copyFrom
+     */
     virtual void copyFrom(const AbstractPixel* other) override;
 
-public:
+    /**
+     * @copydoc AbstractPixel::negative
+     */
     virtual void negative(int maxValue) override;
+
+    /**
+     * @copydoc AbstractPixel::monochrome
+     */
     virtual void monochrome(int maxValue) override;
+
+    /**
+     * @copydoc AbstractPixel::grayscale
+     */
     virtual void grayscale(int maxValue) override;
 
 protected:
+    /**
+     * @brief The channel values of the pixel.
+     */
     DataType channels[Channels];
 };
 
