@@ -6,6 +6,13 @@ SessionManager& SessionManager::getInstance() {
     return instance;
 }
 
+SessionManager::~SessionManager() {
+    for (int i = 0; i < sessions.size(); i++) {
+        delete sessions[i];
+    }
+    
+}
+
 SessionManager::SessionManager() 
     : currentSession(nullptr), isRunning(false) {
 }
@@ -56,19 +63,19 @@ void SessionManager::run() {
     } 
 }
 
-bool SessionManager::addSession(const Session& newSession) {
+bool SessionManager::addSession(Session* newSession) {
     sessions.push_back(newSession);
     return true;
 }
 
-std::vector<Session>& SessionManager::getSessions() {
+std::vector<Session*>& SessionManager::getSessions() {
     return sessions;
 }
 
 bool SessionManager::changeSession(int sessionId) {
     for (int i = 0; i < sessions.size(); i++) {
-        if (sessions[i].getId() == sessionId) {
-            currentSession = &sessions[i];
+        if (sessions[i]->getId() == sessionId) {
+            currentSession = sessions[i];
             return true;
         }
     }

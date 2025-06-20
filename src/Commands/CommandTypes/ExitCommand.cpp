@@ -9,16 +9,16 @@ ExitCommand::ExitCommand(Session* currentSession)
 }
 
 void ExitCommand::execute() {
-    std::vector<Session>& sessions = SessionManager::getInstance().getSessions();
+    std::vector<Session*>& sessions = SessionManager::getInstance().getSessions();
     bool isEverythingSaved = true;
 
     for (int i = 0; i < sessions.size(); i++) {
-        std::vector<Session::SessionImage> images = sessions[i].getSessionImages();
+        std::vector<Session::SessionImage> images = sessions[i]->getSessionImages();
 
         for (int j = 0; j < images.size(); j++)
         {
             if (images[j].status == Session::Status::Modified) {
-                std::cout << "You haved unsaved Changes in Session with ID : " << sessions[i].getId() << "\n";
+                std::cout << "You haved unsaved Changes in Session with ID : " << sessions[i]->getId() << "\n";
                 isEverythingSaved = false;
                 break;
             }

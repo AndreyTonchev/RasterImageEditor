@@ -12,15 +12,16 @@ public:
     SessionManager& operator=(const SessionManager& other) = delete;
     SessionManager(const SessionManager&& other) = delete;
     SessionManager& operator=(const SessionManager&& other) = delete;
+    ~SessionManager();
 
 
     void run();
 
     
     Session* getCurrentSession() const { return currentSession; }
-    std::vector<Session>& getSessions();
+    std::vector<Session*>& getSessions();
     
-    bool addSession(const Session& newSession);
+    bool addSession(Session* newSession);
     bool changeSession(int sessionId);
 
     inline void setIsRunning(bool value) { isRunning = value; }
@@ -29,7 +30,7 @@ private:
     SessionManager();
 
 private:
-    std::vector<Session> sessions;
+    std::vector<Session*> sessions;
     Session* currentSession; 
     bool isRunning;
 };

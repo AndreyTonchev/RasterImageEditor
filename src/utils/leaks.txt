@@ -74,3 +74,17 @@ Command not found! Write 'help' to see the list of available commands
 ==73210==         suppressed: 0 bytes in 0 blocks
 ==73210== 
 ==73210== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
+
+> load media/PPM_P3.ppm media/grayscale.ppm
+Session with ID: 1 started
+Loading image media/PPM_P3.ppm
+Image media/PPM_P3.ppm loaded successfully
+Loading image media/grayscale.ppm
+Image media/grayscale.ppm loaded successfully
+n>negative
+> dsaj
+Command not found! Write 'help' to see the list of available commands
+> flip top
+> add media/negative.ppm
+Image media/negative.ppm added successfully
+> load media/monochrome.ppm media/grayscale.ppm 

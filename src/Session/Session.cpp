@@ -4,14 +4,24 @@ Session::Session()
     : id(generateId()) {
 }
 
-Session::~Session() {
-    // for (int i = 0; i < commands.size(); i++) {
-    //     delete commands[i];
-    // }
+// Session::Session(const Session& other) 
+//     : id(generateId()) {
+//     for (int i = 0; i < other.images.size(); i++) {
+//         images.emplace_back(other.images[i].image->clone(), other.images[i].status);
+//     }
 
-    // for (int i = 0; i < undoCommands.size(); i++) {
-    //     delete undoCommands[i];
-    // }
+    
+    
+// }
+
+Session::~Session() {
+    for (int i = 0; i < commands.size(); i++) {
+        delete commands[i];
+    }
+
+    for (int i = 0; i < undoCommands.size(); i++) {
+        delete undoCommands[i];
+    }
 
     for (int i = 0; i < images.size(); i++)
     {

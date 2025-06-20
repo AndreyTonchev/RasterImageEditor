@@ -8,6 +8,8 @@
 class Session {
 public:
     Session();
+    Session(const Session& other) = delete;
+    Session& operator=(const Session& other) = delete;
     ~Session();
 
     bool addCommand(Command* cmd);
