@@ -16,13 +16,7 @@ void SaveAsCommand::execute() {
     for (size_t i = 0; i < images.size(); ++i) {
 
         Image* tempImage = images[i].image->clone();
-
-        Session::Status newStatus = 
-            (images[i].status == Session::Status::PendingLoad) 
-            ? Session::Status::PendingLoad 
-            : Session::Status::Saved;
-
-        tempImages.emplace_back(tempImage, newStatus);
+        tempImages.emplace_back(tempImage, images[i].status);
     }
 
     for (size_t i = 0; i < sessionCommands.size(); ++i) {
@@ -41,11 +35,8 @@ void SaveAsCommand::execute() {
         if (i < filenames.size()) {
             newFilename = Utils::newFileName(images[i].image->getFilename(), filenames[i]);
         } else {
-            std::string filename = Utils::getFileName(images[i].image->getFilename());
-            std::string extension = Utils::getExtension(images[i].image->getFilename());
-            std::string newName = filename + "_" + timestamp + "." + extension;
-
-            newFilename = Utils::newFileName(images[i].image->getFilename(), newName);
+            std::string newFilename = Utils::getTimestampedName(images[i].image->getFilename());
+            std::string newName = Utils::getFileName(newFilename);
         }
 
         try {
@@ -62,6 +53,7 @@ void SaveAsCommand::execute() {
 }
     
 void SaveAsCommand::validate() const {
+
     int filesAmount = currentSession->getSessionImages().size();
     if (filenames.size() > filesAmount) {
         throw CommandException("Invalid arguments count passed. Max Elements Expected " + filesAmount);
@@ -69,6 +61,12 @@ void SaveAsCommand::validate() const {
 }
 
 void SaveAsCommand::parse(const std::vector<std::string>& args) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
+    setSavedStatus();
+
     filenames = args;
 }
 

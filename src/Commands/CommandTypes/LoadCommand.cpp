@@ -14,18 +14,15 @@ LoadCommand::LoadCommand(Session* currentSession)
 void LoadCommand::execute() {
     Session* newSession = nullptr;
 
-    try
-    {
+    try {
         newSession = new Session();
-    }
-    catch(const std::exception& e)
-    {   
+
+    } catch(const std::exception& e) {   
         delete[] newSession;
         throw CommandException("Unable to load new Session");
     }
     
-
-    std::cout << "Session with ID: " << newSession->getId() << " started" << std::endl; 
+    std::cout << "==Session with ID: " << newSession->getId() << " started==" << std::endl; 
     std::vector<Session::SessionImage>& images = newSession->getSessionImages();
 
     for (int i = 0; i < filenames.size(); i++) {

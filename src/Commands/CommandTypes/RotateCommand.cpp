@@ -17,8 +17,6 @@ void RotateCommand::execute() {
             else if (direction == "right") {
                 images[i].image->transformOrientation(Orientation::R270);
             }
-            
-            images[i].status = Session::Status::Modified;
         }
     } 
 }
@@ -30,10 +28,16 @@ void RotateCommand::validate() const {
 }
 
 void RotateCommand::parse(const std::vector<std::string>& args) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
     if (args.size() != 1) {
         throw CommandException("Invalid arguments count passed. Expected 1");
     }
 
+    setModifiedStatus();
+    
     direction = args[0];
 }
 

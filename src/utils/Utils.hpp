@@ -10,4 +10,5 @@ namespace Utils {
 
     std::string pad(int number);
     std::string getTimestamp();
+    std::string getTimestampedName(const std::string filename);
 }

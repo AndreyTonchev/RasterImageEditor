@@ -8,12 +8,19 @@ GrayscaleCommand::GrayscaleCommand(Session* currentSession)
 
 }
 
+void GrayscaleCommand::parse(const std::vector<std::string>& parse) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
+    setModifiedStatus();
+}
+
 void GrayscaleCommand::execute() {
     std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
         if (images[i].status != Session::Status::PendingLoad) {
             images[i].image->grayscale();
-            images[i].status == Session::Status::Modified;
         }
     }
 }

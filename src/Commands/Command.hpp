@@ -20,7 +20,8 @@ public:
 
     bool isInstant() const;
     
-    static std::vector<Image*>& getSessionImages(Session* s);
+    void setModifiedStatus();
+    void setSavedStatus();
 public:
     static std::vector<std::string> split(const std::string& str);
 

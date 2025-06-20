@@ -1,4 +1,5 @@
 #include "Command.hpp"
+#include "../Session/Session.hpp"
 
 Command::Command(Session* currentSession) 
     : currentSession(currentSession) {
@@ -26,6 +27,28 @@ std::vector<std::string> Command::split(const std::string& str) {
 
     return args;
 
+}
+
+void Command::setModifiedStatus() {
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
+
+    for (size_t i = 0; i < images.size(); ++i) {
+        images[i].status = 
+            (images[i].status == Session::Status::PendingLoad) 
+            ? Session::Status::PendingLoad 
+            : Session::Status::Modified;
+    }
+}
+
+void Command::setSavedStatus() {
+    std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
+
+    for (size_t i = 0; i < images.size(); ++i) {
+        images[i].status = 
+            (images[i].status == Session::Status::PendingLoad) 
+            ? Session::Status::PendingLoad 
+            : Session::Status::Saved;
+    }
 }
 
 void Command::validate() const {

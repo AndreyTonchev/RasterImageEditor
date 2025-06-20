@@ -10,17 +10,16 @@ FlipCommand::FlipCommand(Session* currentSession)
 void FlipCommand::execute() {
     std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
-        if (images[i].status == Session::Status::PendingLoad) {
+        if (images[i].status != Session::Status::PendingLoad) {
 
             if (direction == "top" || direction == "bottom") {
-                images[i].image->transformOrientation(Orientation::MH);
-            } 
-
-            else if (direction == "right" || direction == "left") {
                 images[i].image->transformOrientation(Orientation::MV);
+            } 
+            
+            else if (direction == "right" || direction == "left") {
+                images[i].image->transformOrientation(Orientation::MH);
             }
 
-            images[i].status = Session::Status::Modified;
         }
     } 
 }
@@ -32,10 +31,14 @@ void FlipCommand::validate() const {
 }
 
 void FlipCommand::parse(const std::vector<std::string>& args) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
     if (args.size() != 1) {
         throw CommandException("Invalid arguments count passed. Expected 1");
     }
-
+    setModifiedStatus();
     direction = args[0];
 }
 

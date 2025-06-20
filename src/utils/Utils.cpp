@@ -56,4 +56,12 @@ namespace Utils {
         return timestamp;
     }
     
+    std::string getTimestampedName(const std::string pathname) {
+        std::string filename = getFileName(pathname);
+        std::string extension = getExtension(pathname);
+        std::string timestamp = getTimestamp();
+        std::string newName = filename + "_" + timestamp + "." + extension;
+
+        return newFileName(pathname, newName);
+    }
 }

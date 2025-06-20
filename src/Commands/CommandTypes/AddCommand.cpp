@@ -14,6 +14,10 @@ void AddCommand::execute() {
 }
 
 void AddCommand::parse(const std::vector<std::string>& args) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
     if (args.size() != 1) {
         throw CommandException("Invalid arguments count passed. Expected 1");
     }

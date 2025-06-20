@@ -8,12 +8,19 @@ NegativeCommand::NegativeCommand(Session* currentSession)
 
 }
 
+void NegativeCommand::parse(const std::vector<std::string>& parse) {
+    if (!currentSession) {
+        throw CommandException("No active session.");
+    }
+
+    setModifiedStatus();
+}
+
 void NegativeCommand::execute() {
         std::vector<Session::SessionImage>& images = currentSession->getSessionImages();
     for (int i = 0; i < images.size(); i++) {
         if (images[i].status != Session::Status::PendingLoad) {
             images[i].image->negative();
-            images[i].status == Session::Status::Modified;
         }
     }
 }

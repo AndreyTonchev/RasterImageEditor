@@ -11,15 +11,15 @@ SaveCommand::SaveCommand(Session* currentSession)
 }
 
 void SaveCommand::parse(const std::vector<std::string>& args) {
-    if (!args.empty()) {
-        throw CommandException("Invalid arguments count passed. Expected ");
-    }
-}
-
-void SaveCommand::validate() const {
     if (!currentSession) {
         throw CommandException("No active session.");
     }
+
+    if (!args.empty()) {
+        throw CommandException("Invalid arguments count passed. Expected ");
+    }
+
+    setSavedStatus();
 }
 
 void SaveCommand::execute() {
@@ -30,13 +30,7 @@ void SaveCommand::execute() {
     for (size_t i = 0; i < images.size(); ++i) {
 
         Image* tempImage = images[i].image->clone();
-
-        Session::Status newStatus = 
-            (images[i].status == Session::Status::PendingLoad) 
-            ? Session::Status::PendingLoad 
-            : Session::Status::Saved;
-
-        tempImages.emplace_back(tempImage, newStatus);
+        tempImages.emplace_back(tempImage, images[i].status);
     }
 
     for (size_t i = 0; i < sessionCommands.size(); ++i) {
@@ -48,13 +42,9 @@ void SaveCommand::execute() {
     }
 
     for (size_t i = 0; i < images.size(); ++i) {
-        std::string filename = Utils::getFileName(images[i].image->getFilename());
-        std::string extension = Utils::getExtension(images[i].image->getFilename());
-        std::string timestamp = Utils::getTimestamp();
-
-        std::string newName = filename + "_" + timestamp + "." + extension;
-
-        std::string newFilename = Utils::newFileName(images[i].image->getFilename(), newName);
+        
+        std::string newFilename = Utils::getTimestampedName(images[i].image->getFilename());
+        std::string newName = Utils::getFileName(newFilename);
 
         try {
             images[i].image->save(newFilename);
