@@ -1,0 +1,5 @@
+<map id="Command" name="Command">
+<area shape="rect" id="Node000001" title="Abstract base class representing a command in a session." alt="" coords="5,93,95,119"/>
+<area shape="rect" id="Node000002" href="$classSession.html" title="Represents an image editing session that manages images and commands." alt="" coords="14,5,86,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="53,45,53,93,47,93,47,45"/>
+</map>

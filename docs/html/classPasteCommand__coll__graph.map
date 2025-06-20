@@ -1,0 +1,7 @@
+<map id="PasteCommand" name="PasteCommand">
+<area shape="rect" id="Node000001" title="Command to paste one image onto another at a specified position." alt="" coords="5,168,129,193"/>
+<area shape="rect" id="Node000002" href="$classCommand.html" title="Abstract base class representing a command in a session." alt="" coords="23,93,112,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="70,133,70,168,65,168,65,133"/>
+<area shape="rect" id="Node000003" href="$classSession.html" title="Represents an image editing session that manages images and commands." alt="" coords="31,5,103,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="70,45,70,93,65,93,65,45"/>
+</map>

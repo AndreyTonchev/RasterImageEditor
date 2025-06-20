@@ -1,0 +1,5 @@
+<map id="PixelMatrix&lt; PixelType &gt;" name="PixelMatrix&lt; PixelType &gt;">
+<area shape="rect" id="Node000001" title="Templated concrete implementation of AbstractPixelMatrix for storing and manipulating 2D pixel grids." alt="" coords="5,79,192,104"/>
+<area shape="rect" id="Node000002" href="$classAbstractPixelMatrix.html" title="Abstract base class for a 2D matrix of pixels used in image processing." alt="" coords="24,5,173,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="101,44,101,79,96,79,96,44"/>
+</map>
