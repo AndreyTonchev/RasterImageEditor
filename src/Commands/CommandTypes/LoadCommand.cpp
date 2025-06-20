@@ -31,21 +31,10 @@ void LoadCommand::execute() {
         Image* newImage = nullptr;
 
         try {
-            // TODO - make it with registrar factory
             std::string extension = Utils::getExtension(filenames[i]);
-
+            
             newImage = ImageFactory::create(extension, filenames[i]);
 
-            // if (extension == "ppm") {
-            //     newImage = new PPMImage(filenames[i]);
-            // } 
-            // else if (extension == "pgm") {
-            //     newImage = new PGMImage(filenames[i]);
-            // }
-            // else if (extension == "pbm") {
-            //     newImage = new PBMImage(filenames[i]);
-            // }
-            
             if (!newImage){
                 throw CommandException("Invalid File Extension");
             }

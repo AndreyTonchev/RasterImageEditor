@@ -1,5 +1,6 @@
 #include "AddCommand.hpp"
 #include "../CommandFactory/CommandRegistrar.hpp"
+#include "../../Images/ImageFactory/ImageRegistrar.hpp"
 #include "../../Session/Session.hpp"
 #include "../../utils/Utils.hpp"
 #include "../../Images/AllImages.hpp"
@@ -29,18 +30,11 @@ void AddCommand::parse(const std::vector<std::string>& args) {
     try {
         std::string extension = Utils::getExtension(args[0]);
 
-        if (extension == "ppm") {
-            image = new PPMImage(args[0]);
-        } 
-        else if (extension == "pgm") {
-            image = new PGMImage(args[0]);
-        }
-        else if (extension == "pbm") {
-            image = new PBMImage(args[0]);
-        }
-        else {
-            throw CommandException("Invalid File Extension");
-        }
+            image = ImageFactory::create(extension, args[0]);
+
+            if (!image){
+                throw CommandException("Invalid File Extension");
+            }
 
         images.emplace_back(image, Session::Status::PendingLoad);
         sessionImage = &images[images.size() - 1];
