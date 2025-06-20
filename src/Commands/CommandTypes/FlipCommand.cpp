@@ -26,7 +26,7 @@ void FlipCommand::execute() {
 
 void FlipCommand::validate() const {
     if (direction != "left" && direction != "right" && direction != "top" && direction != "bottom") {
-        throw CommandException("Invalid Rotate direction. You can only rotate 'left' or 'right'.");
+        throw CommandException("Invalid Flip direction. You can only fli 'left'/'right' or 'top'/'bottom'.");
     } 
 }
 

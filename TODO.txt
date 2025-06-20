@@ -1,10 +1,11 @@
 - Image Registrar factory
-- SaveAs exception safety. Delete temps and return to original state if exception is thrown
 - better Function Description
 - Command Manager
-- Validate stacking commands to throwm exception when there is no session
 - Skip comments in Image files
 - CommandManager
+
+- SaveAs exception safety. Delete temps and return to original state if exception is thrown
+- Validate stacking commands to throwm exception when there is no session
 
 DONE
 

@@ -39,8 +39,18 @@ std::vector<Command*>& Session::getSessionCommands() {
     return commands;
 }
 
+std::vector<Command*>& Session::getUndoSessionCommands() {
+    return undoCommands;
+}
+
 bool Session::addCommand(Command* cmd) {
     commands.push_back(cmd);
+
+    for (int i = 0; i < undoCommands.size(); i++) {
+        delete undoCommands[i];
+    }
+    undoCommands.clear();
+    
     return true;
 }
 

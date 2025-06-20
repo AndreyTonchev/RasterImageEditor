@@ -10,3 +10,6 @@
 #include "CommandTypes/AddCommand.hpp"
 #include "CommandTypes/FlipCommand.hpp"
 #include "CommandTypes/RotateCommand.hpp"
+#include "CommandTypes/RedoCommand.hpp"
+#include "CommandTypes/UndoCommand.hpp"
+#include "CommandTypes/ExitCommand.hpp"

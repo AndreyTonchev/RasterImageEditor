@@ -7,6 +7,7 @@
 AddCommand::AddCommand(Session* currentSession)
     : Command(currentSession) {
     instant = false;
+    canUndo = false;
 }
 
 void AddCommand::execute() {

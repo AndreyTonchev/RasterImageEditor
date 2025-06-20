@@ -6,7 +6,6 @@
 #include "../Images/Image.hpp"
 
 class Session;
-class SessionManager;
 
 class Command {
 public:
@@ -19,6 +18,7 @@ public:
     virtual void execute() = 0;
 
     bool isInstant() const;
+    bool getCanUndo() const;
     
     void setModifiedStatus();
     void setSavedStatus();
@@ -27,6 +27,7 @@ public:
 
 protected:
     bool instant;
+    bool canUndo;
     Session* currentSession;
 };
 

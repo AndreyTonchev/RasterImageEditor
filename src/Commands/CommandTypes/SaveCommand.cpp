@@ -16,7 +16,7 @@ void SaveCommand::parse(const std::vector<std::string>& args) {
     }
 
     if (!args.empty()) {
-        throw CommandException("Invalid arguments count passed. Expected ");
+        throw CommandException("Invalid arguments count passed. Expected 0");
     }
 
     setSavedStatus();

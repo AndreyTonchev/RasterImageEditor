@@ -3,6 +3,7 @@
 
 Command::Command(Session* currentSession) 
     : currentSession(currentSession) {
+    canUndo = true;
 }
 
 std::vector<std::string> Command::split(const std::string& str) {
@@ -63,4 +64,8 @@ void Command::parse(const std::vector<std::string>& args) {
 
 bool Command::isInstant() const {
     return instant;
+}
+
+bool Command::getCanUndo() const {
+    return canUndo;
 }

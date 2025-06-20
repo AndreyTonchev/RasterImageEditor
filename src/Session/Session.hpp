@@ -5,6 +5,7 @@
 #include "../Images/Image.hpp"
 #include "../Commands/Command.hpp"
 
+
 class Session {
 public:
     Session();
@@ -33,6 +34,7 @@ public:
     
     std::vector<SessionImage>& getSessionImages();
     std::vector<Command*>& getSessionCommands();
+    std::vector<Command*>& getUndoSessionCommands();
 
 private:
     std::vector<SessionImage> images;

@@ -73,4 +73,4 @@ void LoadCommand::parse(const std::vector<std::string>& args) {
     filenames = args;
 }
 
-static CommandRegistrar<LoadCommand> reg_load("load", "Create a new session and add immages to it");
+static CommandRegistrar<LoadCommand> reg_load("load", "Create a new session and add images to it");

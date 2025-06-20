@@ -24,12 +24,12 @@ void ExitCommand::execute() {
             }
         }
         
-    }
+    }\
 
 
     if (!unsavedSessions.empty()) {
         std::cout << "Do you want to save the changes (Y/n)? \n>";
-        std::string input;
+        std::string input = "";
         std::cin >> input;
         if (input == "" || input == "y") {
             for (int i = 0; i < unsavedSessions.size(); i++) {
