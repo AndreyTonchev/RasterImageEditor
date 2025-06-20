@@ -11,6 +11,7 @@ public:
 
     virtual std::size_t getWidth() const = 0;
     virtual std::size_t getHeight() const = 0;
+    virtual void resize(std::size_t newWidth, std::size_t newHeight) = 0;
 
     virtual AbstractPixel* at(std::size_t w, std::size_t h) = 0;
     virtual const AbstractPixel* at(std::size_t w, std::size_t h) const = 0;

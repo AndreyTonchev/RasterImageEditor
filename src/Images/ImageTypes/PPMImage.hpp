@@ -31,9 +31,6 @@ public:
 
 private:
     PPMSignature signature;
-    int maxValue;
-    int height;
-    int width;
 
 private:
     void loadP3File(std::istream& is);

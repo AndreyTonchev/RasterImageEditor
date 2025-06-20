@@ -28,8 +28,6 @@ public:
 
 private:
     PBMSignature signature;
-    int height;
-    int width;
 
 private:
     void loadP1File(std::istream& is);

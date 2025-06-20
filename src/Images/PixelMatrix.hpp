@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 #include "Image.hpp"
 #include "../Pixels/TemplatePixel.hpp"
@@ -15,6 +16,7 @@ public:
 
     virtual std::size_t getWidth() const override;
     virtual std::size_t getHeight() const override;
+    virtual void resize(std::size_t newWidth, std::size_t newHeight) override;
     
     virtual AbstractPixel* at(std::size_t w, std::size_t h) override;
     virtual const AbstractPixel* at(std::size_t w, std::size_t h) const override;
@@ -57,6 +59,38 @@ std::size_t PixelMatrix<PixelType>::getHeight() const {
 template <typename PixelType>
 std::size_t PixelMatrix<PixelType>::getWidth() const {
     return width;
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::resize(std::size_t newWidth, std::size_t newHeight) {
+    std::vector<std::vector<PixelType>> newPixels(newHeight, std::vector<PixelType>(newWidth));
+
+    std::size_t minWidth = (width > newWidth) ?
+        newWidth : width;
+
+    std::size_t minHeight = (height > newHeight) ?
+        newHeight : height;
+
+
+    for (std::size_t y = 0; y < minHeight; ++y) {
+        for (std::size_t x = 0; x < minWidth; ++x) {
+            newPixels[y][x] = pixels[y][x];
+        }
+    }
+
+    PixelType blank;
+
+    for (std::size_t y = 0; y < newHeight; ++y) {
+        for (std::size_t x = 0; x < newWidth; ++x) {
+            if (y >= height || x >= width) {
+                newPixels[y][x] = blank;
+            }
+        }
+    }
+
+    pixels = std::move(newPixels);
+    width = newWidth;
+    height = newHeight;
 }
 
 template <typename PixelType>

@@ -6,7 +6,7 @@
 
 
 PGMImage::PGMImage() 
-    : Image(), signature(PGMSignature::NONE), maxValue(-1), width(0), height(0) {
+    : Image(), signature(PGMSignature::NONE) {
 }
 
 PGMImage::PGMImage(const std::string& filename) {

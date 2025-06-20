@@ -32,9 +32,6 @@ public:
 
 private:
     PGMSignature signature;
-    int maxValue;
-    int height;
-    int width;
 
 private:
     void loadP2File(std::istream& is);

@@ -5,7 +5,8 @@
 
 
 PBMImage::PBMImage() 
-    : Image(), signature(PBMSignature::NONE), width(0), height(0) {
+    : Image(), signature(PBMSignature::NONE) {
+    maxValue = 1;
 }
 
 PBMImage::PBMImage(const std::string& filename) {

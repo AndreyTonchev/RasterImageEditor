@@ -1,11 +1,11 @@
 #include "Image.hpp"
 
 Image::Image()
-    : pixels(nullptr), filename(""), orientation(Orientation::R0) {
+    : pixels(nullptr), filename(""), orientation(Orientation::R0), width(0), height(0), maxValue(0) {
 }
 
 Image::Image(const Image& other)
-    : filename(other.filename), orientation(Orientation::R0), pixels(nullptr) {
+    : filename(other.filename), orientation(Orientation::R0), pixels(nullptr), width(other.width), height(other.height), maxValue(other.maxValue) {
     try {
         if (other.pixels) {
             pixels = other.pixels->clone();
@@ -27,6 +27,9 @@ Image& Image::operator=(const Image& other) {
         pixels = newPixels;
         filename = other.filename;
         orientation = other.orientation;
+        width = other.width;
+        height = other.height;
+        maxValue = other.maxValue;
     }
     return *this;
 }
@@ -88,17 +91,28 @@ void Image::monochrome() {
 }
 
 std::size_t Image::getWidth() const {
-    return pixels->getWidth();
+    return width;
 }    
 
 std::size_t Image::getHeight() const {
-    return pixels->getHeight();
+    return height;
 }    
+
+std::size_t Image::getMaxValue() const {
+    return maxValue;
+}
 
 std::string Image::getFilename() const {
     return filename;
 }
 
+bool Image::resize(std::size_t newWidth, std::size_t newHeight) {
+    pixels->resize(newWidth, newHeight);
+
+    height = newHeight;
+    width = newWidth;
+    return true;
+}
 
 void Image::save(const std::string& filename) const {
     if (filename == "") {
@@ -110,7 +124,7 @@ void Image::save(const std::string& filename) const {
         throw FileException("Error opening file for writing.");
     }
 
-    this->print(file); // need to check if file is ok
+    this->print(file);
     file.close();
 }
 

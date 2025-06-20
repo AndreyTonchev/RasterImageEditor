@@ -33,8 +33,11 @@ public:
 
     std::size_t getWidth() const;
     std::size_t getHeight() const;
+    std::size_t getMaxValue() const;
     std::string getFilename() const;
     
+    bool resize(std::size_t newWidth, std::size_t newHeight);
+
     virtual void print(std::ostream& os = std::cout) const = 0;
     void printPixels(std::ostream& os = std::cout) const;
     void printDimensions(std::ostream& os = std::cout) const;
@@ -48,10 +51,15 @@ public:
     void monochrome();
     void save(const std::string& filename) const;
     
-protected:
+protected:  
     std::string filename;
-    AbstractPixelMatrix* pixels;
+
+    int height;
+    int width;
+    int maxValue;
+
     Orientation orientation;
+    AbstractPixelMatrix* pixels;
 
     static Orientation orientationTable[8][8];
 };

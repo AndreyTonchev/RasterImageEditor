@@ -5,6 +5,7 @@
 #include "../../utils/Utils.hpp"
 #include "../../Images/AllImages.hpp"
 #include "../../Images/ImageFactory/ImageFactory.hpp"
+
 #include <iostream>
 
 LoadCommand::LoadCommand(Session* currentSession) 

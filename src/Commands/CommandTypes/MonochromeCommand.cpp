@@ -7,7 +7,7 @@ MonochromeCommand::MonochromeCommand(Session* currentSession)
     instant = false;
 }
 
-void MonochromeCommand::parse(const std::vector<std::string>& parse) {
+void MonochromeCommand::parse(const std::vector<std::string>& args) {
     if (!currentSession) {
         throw CommandException("No active session.");
     }
