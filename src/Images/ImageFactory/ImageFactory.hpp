@@ -8,11 +8,12 @@
 
 class ImageFactory {
 public:
-    static void registerImage(const std::string& name, const std::string& description, ImageBase* creator);
-    static Image* create(const std::string& name, const std::string& filename);
+    static void registerImage(const std::string& extension, const std::string& description, ImageBase* creator);
+    static Image* create(const std::string& extension, const std::string& filename);
+    static std::string getImageDescription(const std::string& extension);
 private:
     struct ImageEntry {
-        std::string name;
+        std::string extension;
         std::string description;
         ImageBase* creator;
     }; 
