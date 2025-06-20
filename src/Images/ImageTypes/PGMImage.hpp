@@ -11,6 +11,7 @@
 #pragma once
 
 #include "../Image.hpp"
+#include "../ImageFactory/ImageRegistrar.hpp"
 
 
 enum class PGMSignature {
@@ -44,3 +45,5 @@ private:
         GRAY
     };
 };
+
+static ImageRegistrar<PGMImage> reg_pgmImage("pgm", "Portable Graymap format");

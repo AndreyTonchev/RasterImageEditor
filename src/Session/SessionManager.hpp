@@ -8,6 +8,7 @@
 class SessionManager {
 public:   
     static SessionManager& getInstance();
+    
     SessionManager(const SessionManager& other) = delete;
     SessionManager& operator=(const SessionManager& other) = delete;
     SessionManager(const SessionManager&& other) = delete;

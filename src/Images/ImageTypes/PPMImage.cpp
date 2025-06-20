@@ -1,6 +1,7 @@
 #include "PPMImage.hpp"
 #include "../../Pixels/PixelTypes/RGBPixel8.hpp"
 #include "../../Pixels/PixelTypes/RGBPixel16.hpp"
+#include "../ImageFactory/ImageRegistrar.hpp"
 #include "../PixelMatrix.hpp"
 
 PPMImage::PPMImage() 
@@ -106,3 +107,5 @@ void PPMImage::loadP3File(std::istream& is) {
 void PPMImage::loadP6File(std::istream& is) {
     
 }
+
+static ImageRegistrar<PPMImage> reg_ppmImage("ppm", "Portable Pixemap format");

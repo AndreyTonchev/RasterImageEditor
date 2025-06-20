@@ -1,4 +1,5 @@
 #include "PBMImage.hpp"
+#include "../ImageFactory/ImageRegistrar.hpp"
 #include "../../Pixels/PixelTypes/MonoPixel8.hpp"
 #include "../PixelMatrix.hpp"
 
@@ -91,3 +92,5 @@ void PBMImage::loadP1File(std::istream& is) {
 void PBMImage::loadP4File(std::istream& is) {
 
 }
+
+static ImageRegistrar<PBMImage> reg_pbmImage("pbm", "Portable Bit Map");

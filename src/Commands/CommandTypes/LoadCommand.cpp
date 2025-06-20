@@ -4,6 +4,7 @@
 #include "../../Session/SessionManager.hpp"
 #include "../../utils/Utils.hpp"
 #include "../../Images/AllImages.hpp"
+#include "../../Images/ImageFactory/ImageFactory.hpp"
 #include <iostream>
 
 LoadCommand::LoadCommand(Session* currentSession) 
@@ -33,16 +34,19 @@ void LoadCommand::execute() {
             // TODO - make it with registrar factory
             std::string extension = Utils::getExtension(filenames[i]);
 
-            if (extension == "ppm") {
-                newImage = new PPMImage(filenames[i]);
-            } 
-            else if (extension == "pgm") {
-                newImage = new PGMImage(filenames[i]);
-            }
-            else if (extension == "pbm") {
-                newImage = new PBMImage(filenames[i]);
-            }
-            else {
+            newImage = ImageFactory::create(extension, filenames[i]);
+
+            // if (extension == "ppm") {
+            //     newImage = new PPMImage(filenames[i]);
+            // } 
+            // else if (extension == "pgm") {
+            //     newImage = new PGMImage(filenames[i]);
+            // }
+            // else if (extension == "pbm") {
+            //     newImage = new PBMImage(filenames[i]);
+            // }
+            
+            if (!newImage){
                 throw CommandException("Invalid File Extension");
             }
 
