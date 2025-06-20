@@ -20,6 +20,7 @@ public:
     virtual uint32_t getChannel(std::size_t channel) const override;
 
     virtual void print(std::ostream& os = std::cout) const override;
+    virtual void copyFrom(const AbstractPixel* other) override;
 
 public:
     virtual void negative(int maxValue) override;
@@ -101,4 +102,18 @@ void TemplatePixel<DataType, Channels>::grayscale(int maxValue) {
     for (int i = 0; i < Channels; i++) {
         channels[i] = gray;
     }   
+}
+
+template <typename DataType, std::size_t Channels>
+void TemplatePixel<DataType, Channels>::copyFrom(const AbstractPixel* other) {
+    const TemplatePixel<DataType, Channels>* casted =
+        dynamic_cast<const TemplatePixel<DataType, Channels>*>(other);
+
+    if (!casted) {
+        throw FormatException("Pixel type mismatch in copyFrom");
+    }
+
+    for (std::size_t i = 0; i < Channels; ++i) {
+        this->channels[i] = casted->channels[i];
+    }
 }

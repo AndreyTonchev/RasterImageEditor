@@ -106,6 +106,14 @@ std::string Image::getFilename() const {
     return filename;
 }
 
+AbstractPixel* Image::at(std::size_t w, std::size_t h) {
+    return pixels->at(w,h);
+}
+
+const AbstractPixel* Image::at(std::size_t w, std::size_t h) const {
+    return pixels->at(w,h);
+}
+
 bool Image::resize(std::size_t newWidth, std::size_t newHeight) {
     pixels->resize(newWidth, newHeight);
 

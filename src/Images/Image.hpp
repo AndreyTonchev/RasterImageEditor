@@ -36,6 +36,8 @@ public:
     std::size_t getMaxValue() const;
     std::string getFilename() const;
     
+    virtual AbstractPixel* at(std::size_t w, std::size_t h);
+    virtual const AbstractPixel* at(std::size_t w, std::size_t h) const ;
     bool resize(std::size_t newWidth, std::size_t newHeight);
 
     virtual void print(std::ostream& os = std::cout) const = 0;
