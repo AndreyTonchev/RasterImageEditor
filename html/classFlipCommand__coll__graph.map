@@ -1,0 +1,7 @@
+<map id="FlipCommand" name="FlipCommand">
+<area shape="rect" id="Node000001" title="Command to flip all images in the current session horizontally or vertically." alt="" coords="5,168,119,193"/>
+<area shape="rect" id="Node000002" href="$classCommand.html" title="Abstract base class representing a command in a session." alt="" coords="17,93,107,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="65,133,65,168,59,168,59,133"/>
+<area shape="rect" id="Node000003" href="$classSession.html" title="Represents an image editing session that manages images and commands." alt="" coords="26,5,98,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="65,45,65,93,59,93,59,45"/>
+</map>

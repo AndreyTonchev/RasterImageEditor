@@ -1,0 +1,29 @@
+<map id="src/Images/ImageTypes/PBMImage.hpp" name="src/Images/ImageTypes/PBMImage.hpp">
+<area shape="rect" id="Node000001" title="Declares the PBMImage class for handling PBM image files (P1 ASCII and P4 binary formats)." alt="" coords="266,5,441,45"/>
+<area shape="rect" id="Node000002" href="$Image_8hpp_source.html" title=" " alt="" coords="302,93,405,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="356,46,356,79,351,79,351,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="11,313,88,339"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="302,112,253,117,195,127,134,144,77,169,53,184,36,198,23,216,11,241,8,257,12,272,30,302,26,304,7,274,3,257,6,239,18,213,32,194,50,179,75,164,133,139,194,122,252,111,302,106"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="447,240,506,265"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="378,116,410,137,441,165,460,196,472,226,467,228,455,198,437,168,407,141,375,121"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="285,240,348,265"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="353,120,325,227,320,226,348,118"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="207,313,287,339"/>
+<area shape="poly" id="edge5_Node000002_Node000006" title=" " alt="" coords="405,106,479,111,561,121,635,138,663,150,682,165,687,178,683,193,671,235,661,252,643,268,616,281,580,292,487,309,387,320,301,325,301,320,387,314,486,304,578,287,614,276,640,263,657,248,666,233,678,191,681,179,678,168,661,155,634,143,560,126,478,116,405,112"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="354,167,428,192"/>
+<area shape="poly" id="edge6_Node000002_Node000007" title=" " alt="" coords="362,118,381,153,376,156,357,120"/>
+<area shape="rect" id="Node000008" href="$AbstractPixel_8hpp_source.html" title=" " alt="" coords="20,240,210,265"/>
+<area shape="poly" id="edge7_Node000002_Node000008" title=" " alt="" coords="302,114,243,121,179,132,124,148,104,157,90,168,85,182,85,197,100,228,95,230,80,198,79,181,86,165,101,153,122,143,178,127,243,116,302,109"/>
+<area shape="rect" id="Node000009" href="$AbstractPixelMatrix_8hpp_source.html" title=" " alt="" coords="101,167,278,192"/>
+<area shape="poly" id="edge10_Node000002_Node000009" title=" " alt="" coords="328,121,230,164,228,159,326,116"/>
+<area shape="rect" id="Node000010" href="$Exceptions_8hpp_source.html" title=" " alt="" coords="503,167,668,192"/>
+<area shape="poly" id="edge14_Node000002_Node000010" title=" " alt="" coords="392,116,536,160,534,165,390,121"/>
+<area shape="poly" id="edge9_Node000008_Node000003" title=" " alt="" coords="106,267,71,305,67,301,102,264"/>
+<area shape="poly" id="edge8_Node000008_Node000006" title=" " alt="" coords="137,263,215,304,212,309,135,268"/>
+<area shape="poly" id="edge12_Node000009_Node000005" title=" " alt="" coords="211,190,285,231,282,235,209,194"/>
+<area shape="poly" id="edge11_Node000009_Node000006" title=" " alt="" coords="199,191,224,239,243,299,238,300,219,241,194,193"/>
+<area shape="poly" id="edge13_Node000009_Node000008" title=" " alt="" coords="179,194,139,232,135,229,176,190"/>
+<area shape="poly" id="edge16_Node000010_Node000004" title=" " alt="" coords="569,194,507,235,504,230,567,190"/>
+<area shape="rect" id="Node000011" title=" " alt="" coords="542,240,629,265"/>
+<area shape="poly" id="edge15_Node000010_Node000011" title=" " alt="" coords="588,192,588,226,583,226,583,192"/>
+</map>

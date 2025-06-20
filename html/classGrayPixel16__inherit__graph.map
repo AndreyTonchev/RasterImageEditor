@@ -1,0 +1,7 @@
+<map id="GrayPixel16" name="GrayPixel16">
+<area shape="rect" id="Node000001" title="Represents a 16&#45;bit grayscale pixel with a single channel." alt="" coords="40,167,140,192"/>
+<area shape="rect" id="Node000002" href="$classTemplatePixel.html" title=" " alt="" coords="5,79,175,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="93,132,93,166,87,166,87,132"/>
+<area shape="rect" id="Node000003" href="$classAbstractPixel.html" title="Abstract interface representing a generic pixel." alt="" coords="37,5,143,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="93,44,93,79,87,79,87,44"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classAbstractPixelMatrix.html" title="Abstract base class for a 2D matrix of pixels used in image processing." alt="" coords="5,5,155,31"/>
+<area shape="rect" id="Node000001" href="$classPixelMatrix.html" title="Templated concrete implementation of AbstractPixelMatrix for storing and manipulating 2D pixel grids." alt="" coords="203,5,389,31"/>
+<area shape="poly" id="edge11_Node000000_Node000001" title=" " alt="" coords="168,15,203,15,203,21,168,21"/>
+</map>

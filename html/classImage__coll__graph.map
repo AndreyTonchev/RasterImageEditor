@@ -1,0 +1,5 @@
+<map id="Image" name="Image">
+<area shape="rect" id="Node000001" title="Abstract base class for a raster image." alt="" coords="49,93,111,119"/>
+<area shape="rect" id="Node000002" href="$classAbstractPixelMatrix.html" title="Abstract base class for a 2D matrix of pixels used in image processing." alt="" coords="5,5,155,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="83,45,83,93,77,93,77,45"/>
+</map>

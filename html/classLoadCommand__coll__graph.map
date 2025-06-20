@@ -1,0 +1,7 @@
+<map id="LoadCommand" name="LoadCommand">
+<area shape="rect" id="Node000001" title="Command that creates a session loads image files into the session." alt="" coords="5,168,125,193"/>
+<area shape="rect" id="Node000002" href="$classCommand.html" title="Abstract base class representing a command in a session." alt="" coords="21,93,110,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,133,68,168,63,168,63,133"/>
+<area shape="rect" id="Node000003" href="$classSession.html" title="Represents an image editing session that manages images and commands." alt="" coords="29,5,101,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="68,45,68,93,63,93,63,45"/>
+</map>

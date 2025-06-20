@@ -1,0 +1,23 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$classAbstractPixel.html" title="Abstract interface representing a generic pixel." alt="" coords="5,146,112,171"/>
+<area shape="rect" id="Node000001" href="$classTemplatePixel.html" title=" " alt="" coords="172,5,341,45"/>
+<area shape="poly" id="edge1_Node000000_Node000001" title=" " alt="" coords="77,134,113,97,159,60,192,43,195,48,161,65,116,101,81,138"/>
+<area shape="rect" id="Node000003" href="$classTemplatePixel.html" title=" " alt="" coords="176,75,337,115"/>
+<area shape="poly" id="edge3_Node000000_Node000003" title=" " alt="" coords="111,139,193,112,195,117,113,144"/>
+<area shape="rect" id="Node000006" href="$classTemplatePixel.html" title=" " alt="" coords="172,139,341,179"/>
+<area shape="poly" id="edge6_Node000000_Node000006" title=" " alt="" coords="126,156,172,156,172,161,126,161"/>
+<area shape="rect" id="Node000008" href="$classTemplatePixel.html" title=" " alt="" coords="176,203,337,243"/>
+<area shape="poly" id="edge8_Node000000_Node000008" title=" " alt="" coords="113,173,195,200,193,205,111,178"/>
+<area shape="rect" id="Node000010" href="$classTemplatePixel.html" title="A templated pixel implementation supporting arbitrary data types and number of channels." alt="" coords="160,267,353,307"/>
+<area shape="poly" id="edge10_Node000000_Node000010" title=" " alt="" coords="81,180,116,217,161,252,185,264,183,269,159,257,113,221,77,184"/>
+<area shape="rect" id="Node000002" href="$classGrayPixel16.html" title="Represents a 16&#45;bit grayscale pixel with a single channel." alt="" coords="401,6,501,31"/>
+<area shape="poly" id="edge2_Node000001_Node000002" title=" " alt="" coords="355,19,401,18,401,23,355,25"/>
+<area shape="rect" id="Node000004" href="$classGrayPixel8.html" title="Represents an 8&#45;bit grayscale pixel with a single channel." alt="" coords="405,55,497,81"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="351,79,405,72,406,77,352,84"/>
+<area shape="rect" id="Node000005" href="$classMonoPixel8.html" title="Represents an 8&#45;bit monochrome pixel with a single channel." alt="" coords="403,105,500,130"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="352,103,403,109,402,114,351,108"/>
+<area shape="rect" id="Node000007" href="$classRGBPixel16.html" title="Represents a 16&#45;bit RGB pixel with three color channels." alt="" coords="403,154,500,179"/>
+<area shape="poly" id="edge7_Node000006_Node000007" title=" " alt="" coords="355,160,403,162,402,167,355,165"/>
+<area shape="rect" id="Node000009" href="$classRGBPixel8.html" title="Represents an 8&#45;bit RGB pixel with three color channels." alt="" coords="407,210,496,235"/>
+<area shape="poly" id="edge9_Node000008_Node000009" title=" " alt="" coords="352,220,406,220,406,225,352,225"/>
+</map>

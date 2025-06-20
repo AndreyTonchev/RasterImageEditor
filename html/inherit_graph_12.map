@@ -1,0 +1,13 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" title=" " alt="" coords="5,31,120,56"/>
+<area shape="rect" id="Node000001" href="$classCommandException.html" title="Exception class used to represent errors during command execution." alt="" coords="168,5,321,31"/>
+<area shape="poly" id="edge36_Node000000_Node000001" title=" " alt="" coords="133,31,167,26,168,31,134,36"/>
+<area shape="rect" id="Node000002" href="$classImageException.html" title=" " alt="" coords="181,55,308,80"/>
+<area shape="poly" id="edge37_Node000000_Node000002" title=" " alt="" coords="134,50,181,56,181,62,133,55"/>
+<area shape="rect" id="Node000003" href="$classFileException.html" title=" " alt="" coords="383,5,492,31"/>
+<area shape="poly" id="edge38_Node000002_Node000003" title=" " alt="" coords="307,49,386,28,387,33,309,54"/>
+<area shape="rect" id="Node000004" href="$classFormatException.html" title=" " alt="" coords="371,55,503,80"/>
+<area shape="poly" id="edge39_Node000002_Node000004" title=" " alt="" coords="322,65,371,65,371,70,322,70"/>
+<area shape="rect" id="Node000005" href="$classSessionException.html" title=" " alt="" coords="369,104,505,129"/>
+<area shape="poly" id="edge40_Node000002_Node000005" title=" " alt="" coords="309,81,387,101,386,106,307,86"/>
+</map>

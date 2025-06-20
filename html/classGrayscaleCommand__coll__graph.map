@@ -1,0 +1,7 @@
+<map id="GrayscaleCommand" name="GrayscaleCommand">
+<area shape="rect" id="Node000001" title="Command to convert all images in the current session to grayscale." alt="" coords="5,168,160,193"/>
+<area shape="rect" id="Node000002" href="$classCommand.html" title="Abstract base class representing a command in a session." alt="" coords="38,93,127,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="85,133,85,168,80,168,80,133"/>
+<area shape="rect" id="Node000003" href="$classSession.html" title="Represents an image editing session that manages images and commands." alt="" coords="47,5,119,31"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="85,45,85,93,80,93,80,45"/>
+</map>
