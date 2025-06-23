@@ -108,6 +108,54 @@ public:
      */
     virtual void printAD(std::ostream& os = std::cout) const = 0;
 
+    /**
+     * @brief Prints the matrix in its default orientation (0 degrees rotation).
+     * @param os Output stream to print to.
+     */
+    virtual void printR0Binary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix rotated 90 degrees clockwise.
+     * @param os Output stream to print to.
+     */
+    virtual void printR90Binary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix rotated 180 degrees.
+     * @param os Output stream to print to.
+     */
+    virtual void printR180Binary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix rotated 270 degrees clockwise.
+     * @param os Output stream to print to.
+     */
+    virtual void printR270Binary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix mirrored horizontally.
+     * @param os Output stream to print to.
+     */
+    virtual void printMHBinary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix mirrored vertically.
+     * @param os Output stream to print to.
+     */
+    virtual void printMVBinary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix flipped across the main diagonal.
+     * @param os Output stream to print to.
+     */
+    virtual void printDFBinary(std::ostream& os = std::cout) const = 0;
+
+    /**
+     * @brief Prints the matrix flipped across the anti-diagonal.
+     * @param os Output stream to print to.
+     */
+    virtual void printADBinary(std::ostream& os = std::cout) const = 0;
+
 public:
     /**
      * @brief Applies a negative filter to the pixel matrix.

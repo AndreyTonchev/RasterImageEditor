@@ -119,6 +119,54 @@ public:
      */
     virtual void printAD(std::ostream& os = std::cout) const override;
 
+        /**
+     * @brief Prints the matrix in its original orientation (0°).
+     * @param os Output stream.
+     */
+    virtual void printR0Binary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 90° clockwise.
+     * @param os Output stream.
+     */
+    virtual void printR90Binary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 180°.
+     * @param os Output stream.
+     */
+    virtual void printR180Binary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix rotated 270° clockwise.
+     * @param os Output stream.
+     */
+    virtual void printR270Binary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix mirrored horizontally.
+     * @param os Output stream.
+     */
+    virtual void printMHBinary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix mirrored vertically.
+     * @param os Output stream.
+     */
+    virtual void printMVBinary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix flipped across the main diagonal.
+     * @param os Output stream.
+     */
+    virtual void printDFBinary(std::ostream& os = std::cout) const override;
+
+    /**
+     * @brief Prints the matrix flipped across the anti-diagonal.
+     * @param os Output stream.
+     */
+    virtual void printADBinary(std::ostream& os = std::cout) const override;
+
 public:
     /**
      * @brief Applies a negative filter to all pixels.
@@ -314,5 +362,78 @@ void PixelMatrix<PixelType>::printAD(std::ostream& os) const {
             pixels[h][w].print(os);
         }
         os << std::endl;
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR0Binary(std::ostream& os) const {
+    for (int h = 0; h < height; h++) {
+        for (int w = 0; w < width; w++) {
+            pixels[h][w].printBinary(os);
+        }
+
+    } 
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR90Binary(std::ostream& os) const {
+    for (int w = 0; w < width; w++) {
+        for (int h = height - 1; h >= 0; h--) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR180Binary(std::ostream& os) const {
+    for (int h = height - 1; h >= 0; h--) {
+        for (int w = width - 1 ; w >= 0; w--) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printR270Binary(std::ostream& os) const {
+    for (int w = width - 1; w >= 0; w--) {
+        for (int h = 0; h < height; h++) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printMHBinary(std::ostream& os) const {
+    for (int h = 0; h < height; h++) {
+        for (int w = width - 1; w >= 0; w--) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printMVBinary(std::ostream& os) const {
+    for (int h = height - 1; h >= 0; h--) {
+        for (int w = 0; w < width; w++) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printDFBinary(std::ostream& os) const {
+    for (int w = 0; w < width; w++) {
+        for (int h = 0; h < height; h++) {
+            pixels[h][w].printBinary(os);
+        }
+    }
+}
+
+template <typename PixelType>
+void PixelMatrix<PixelType>::printADBinary(std::ostream& os) const {
+    for (int w = width - 1; w >= 0; w--) {
+        for (int h = height - 1; h >= 0; h--) {
+            pixels[h][w].printBinary(os);
+        }
     }
 }

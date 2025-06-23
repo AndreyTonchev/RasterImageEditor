@@ -66,6 +66,38 @@ void Image::printPixels(std::ostream& os) const {
     }
 }
 
+void Image::printPixelsBinary(std::ostream& os) const {
+    switch (orientation) {
+        case Orientation::R0:
+            pixels->printR0Binary(os);
+            break;
+        case Orientation::R90:
+            pixels->printR90Binary(os);
+            break;
+        case Orientation::R180:
+            pixels->printR180Binary(os);
+            break;
+        case Orientation::R270:
+            pixels->printR270Binary(os);
+            break;
+        case Orientation::MH:
+            pixels->printMHBinary(os);
+            break;
+        case Orientation::MV:
+            pixels->printMVBinary(os);
+            break;
+        case Orientation::DF:
+            pixels->printDFBinary(os);
+            break;
+        case Orientation::AD:
+            pixels->printADBinary(os);
+            break;
+        default:
+            os << "Unknown orientation\n";
+            break;
+    }
+}
+
 void Image::printDimensions(std::ostream& os) const {
     if (orientation == Orientation::R90 ||
         orientation == Orientation::R270 ||
@@ -120,20 +152,6 @@ bool Image::resize(std::size_t newWidth, std::size_t newHeight) {
     height = newHeight;
     width = newWidth;
     return true;
-}
-
-void Image::save(const std::string& filename) {
-    if (filename == "") {
-        throw FileException("Bad File Name.");
-    }
-
-    std::ofstream file(filename);
-    if (!file) {
-        throw FileException("Error opening file for writing.");
-    }
-
-    this->print(file);
-    file.close();
 }
 
 using O = Orientation;

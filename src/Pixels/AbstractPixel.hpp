@@ -46,6 +46,13 @@ public:
     virtual void print(std::ostream& os = std::cout) const = 0;
 
     /**
+     * @brief Print the pixel's channel values to the given output stream.
+     * 
+     * @param os The output stream to print to (defaults to std::cout).
+     */
+    virtual void printBinary(std::ostream& os) const = 0;
+
+    /**
      * @brief Copy channel data from another pixel of the same type.
      * 
      * @param other Pointer to the source pixel.

@@ -56,15 +56,15 @@ public:
     inline virtual Image* clone() const override { return new PPMImage(*this); }
 
     /**
-     * @brief Prints image information to the specified output stream.
-     * @param os Output stream, defaults to std::cout.
-     */
-    virtual void print(std::ostream& os = std::cout) override;
-
-    /**
      * @brief Default destructor.
      */
     virtual ~PPMImage() = default;
+
+    /**
+     * @brief Saves image information to the specified output stream.
+     * @param os Output stream, defaults to std::cout.
+     */
+    virtual void save(const std::string& filename) override;
 
 private:
     PPMSignature signature; ///< Stores the PPM signature (P3 or P6).

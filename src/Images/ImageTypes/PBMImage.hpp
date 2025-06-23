@@ -55,10 +55,10 @@ public:
     inline virtual Image* clone() const override { return new PBMImage(*this); }
 
     /**
-     * @brief Prints image information to the specified output stream.
+     * @brief Saves image information to the specified output stream.
      * @param os Output stream, defaults to std::cout.
      */
-    virtual void print(std::ostream& os = std::cout) override;
+    virtual void save(const std::string& filename) override;
 
 private:
     PBMSignature signature; ///< Stores the PBM signature (P1 or P4).
@@ -74,4 +74,13 @@ private:
      * @param is Input stream to read from.
      */
     void loadP4File(std::istream& is);
+
+private:
+    /**
+     * @enum Channels
+     * @brief Represents monochrome channel index.
+     */
+    enum Channels {
+        MONO ///< Mono channel index
+    };
 };

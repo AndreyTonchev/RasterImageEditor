@@ -113,16 +113,16 @@ public:
     bool resize(std::size_t newWidth, std::size_t newHeight);
 
     /**
-     * @brief Print the Image to a file
-     * @param os Output stream to print to.
-     */
-    virtual void print(std::ostream& os = std::cout) = 0;
-
-    /**
      * @brief Print the pixel matrix of the image.
      * @param os Output stream to print to.
      */
     void printPixels(std::ostream& os = std::cout) const;
+
+    /**
+     * @brief Print binary the pixel matrix of the image.
+     * @param os Output stream to print to.
+     */
+    void printPixelsBinary(std::ostream& os = std::cout) const;
 
     /**
      * @brief Print dimensions of the image.
@@ -155,7 +155,7 @@ public:
      * @brief Save the image to a file.
      * @param filename The path to save the image to.
      */
-    void save(const std::string& filename);
+    virtual void save(const std::string& filename) = 0;
 
 protected:
     std::string filename;              ///< Path and name of the file

@@ -49,7 +49,6 @@ PPMImage::PPMImage(const std::string& filename) {
             loadP6File(file);
         }
         else {
-            std::cout << "DSAadsads";
             throw FormatException("Signature not matching Image type.");
         }
 
@@ -61,17 +60,36 @@ PPMImage::PPMImage(const std::string& filename) {
     }
 }
 
-void PPMImage::print(std::ostream& os) {
-    // std::string signatureStr = (signature == PPMSignature::P3) ? "P3" : "P6";
-
-    std::string signatureStr = "P3";
-    os << signatureStr << std::endl;
-    printDimensions(os);
-    os << maxValue << std::endl;
-
-    printPixels(os);
-
+void PPMImage::save(const std::string& filename) {
+    if (filename == "") {
+        throw FileException("Bad File Name.");
+    }   
     
+    std::ofstream file;
+    if (signature == PPMSignature::P3) {
+        file.open(filename);
+        if (!file) {
+            throw FileException("Failed to open file for writing: " + filename);
+        }
+
+        file << "P3\n";
+        printDimensions(file);
+        file  << maxValue << "\n";
+        printPixelsBinary(file);
+    } 
+    else if (signature == PPMSignature::P6) {   
+        file.open(filename, std::ios::binary);
+        if (!file) {
+            throw FileException("Failed to open file for writing: " + filename);
+        }
+
+        file << "P6\n";
+        printDimensions(file);
+        file  << maxValue << "\n";
+        printPixelsBinary(file);
+    }
+
+    file.close();
 }
 
 void PPMImage::loadP3File(std::istream& is) {
@@ -114,9 +132,6 @@ void PPMImage::loadP3File(std::istream& is) {
 }
 
 void PPMImage::loadP6File(std::istream& is) {
-
-    skipComments(is);
-
     try {
         if (maxValue <= 255) {
             pixels = new PixelMatrix<RGBPixel8>(width, height, maxValue);

@@ -49,6 +49,11 @@ public:
     virtual void print(std::ostream& os = std::cout) const override;
 
     /**
+     * @copydoc AbstractPixel::printBinary
+     */
+    virtual void printBinary(std::ostream& os) const override;
+
+    /**
      * @copydoc AbstractPixel::copyFrom
      */
     virtual void copyFrom(const AbstractPixel* other) override;
@@ -106,11 +111,19 @@ void TemplatePixel<DataType, Channels>::print(std::ostream& os) const {
 } 
 
 template <typename DataType, std::size_t Channels>
+void TemplatePixel<DataType, Channels>::printBinary(std::ostream& os) const {
+    for (int i = 0; i < Channels; i++) {
+        os.write(reinterpret_cast<const char*>(&channels[i]), sizeof(DataType));
+    }
+}
+
+template <typename DataType, std::size_t Channels>
 void TemplatePixel<DataType, Channels>::negative(int maxValue) {
     for (int i = 0; i < Channels; i++) {
         channels[i] = maxValue - channels[i];
     }
 }
+
 
 template <typename DataType, std::size_t Channels>
 void TemplatePixel<DataType, Channels>::monochrome(int maxValue) {
