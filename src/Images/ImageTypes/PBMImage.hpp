@@ -58,7 +58,7 @@ public:
      * @brief Prints image information to the specified output stream.
      * @param os Output stream, defaults to std::cout.
      */
-    virtual void print(std::ostream& os = std::cout) const override;
+    virtual void print(std::ostream& os = std::cout) override;
 
 private:
     PBMSignature signature; ///< Stores the PBM signature (P1 or P4).

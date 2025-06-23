@@ -59,7 +59,7 @@ public:
      * @brief Prints image information to the specified output stream.
      * @param os Output stream, defaults to std::cout.
      */
-    virtual void print(std::ostream& os = std::cout) const override;
+    virtual void print(std::ostream& os = std::cout) override;
 
     /**
      * @brief Default destructor.
@@ -80,6 +80,8 @@ private:
      * @param is Input stream to read from.
      */
     void loadP6File(std::istream& is);
+
+    void saveP6File(std::ostream& os);
 
 private:
     /**

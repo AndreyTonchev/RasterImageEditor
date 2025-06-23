@@ -116,7 +116,7 @@ public:
      * @brief Print the Image to a file
      * @param os Output stream to print to.
      */
-    virtual void print(std::ostream& os = std::cout) const = 0;
+    virtual void print(std::ostream& os = std::cout) = 0;
 
     /**
      * @brief Print the pixel matrix of the image.
@@ -155,7 +155,7 @@ public:
      * @brief Save the image to a file.
      * @param filename The path to save the image to.
      */
-    void save(const std::string& filename) const;
+    void save(const std::string& filename);
 
 protected:
     std::string filename;              ///< Path and name of the file

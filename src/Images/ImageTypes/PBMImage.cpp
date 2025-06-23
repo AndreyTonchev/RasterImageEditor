@@ -56,7 +56,7 @@ PBMImage::PBMImage(const std::string& filename) {
     }
 }
 
-void PBMImage::print(std::ostream& os) const {
+void PBMImage::print(std::ostream& os)  {
     std::string signatureStr = (signature == PBMSignature::P1) ? "P1" : "P4";
 
     os << signatureStr << std::endl;

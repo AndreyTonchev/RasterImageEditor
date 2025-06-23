@@ -57,7 +57,7 @@ PGMImage::PGMImage(const std::string& filename) {
     }
 }
 
-void PGMImage::print(std::ostream& os) const {
+void PGMImage::print(std::ostream& os) {
     std::string signatureStr = (signature == PGMSignature::P2) ? "P2" : "P5";
 
     os << signatureStr << std::endl;

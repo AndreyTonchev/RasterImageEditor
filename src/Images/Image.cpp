@@ -122,7 +122,7 @@ bool Image::resize(std::size_t newWidth, std::size_t newHeight) {
     return true;
 }
 
-void Image::save(const std::string& filename) const {
+void Image::save(const std::string& filename) {
     if (filename == "") {
         throw FileException("Bad File Name.");
     }
