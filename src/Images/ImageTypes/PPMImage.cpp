@@ -21,12 +21,16 @@ PPMImage::PPMImage(const std::string& filename) {
             throw FileException("Error opening file for reading.");
         }
 
+        skipComments(file);
+
         std::string imageSignature;
         file >> imageSignature;
         if (!file) {
             throw FileException("Error reading file data (Signature).");
         }
         
+        skipComments(file);
+
         file >> this->width >> this->height >> this->maxValue;
         if (!file) {
             throw FileException("Error reading file data (Dimensions)");
@@ -58,16 +62,15 @@ PPMImage::PPMImage(const std::string& filename) {
 }
 
 void PPMImage::print(std::ostream& os) {
-    std::string signatureStr = (signature == PPMSignature::P3) ? "P3" : "P6";
+    // std::string signatureStr = (signature == PPMSignature::P3) ? "P3" : "P6";
 
+    std::string signatureStr = "P3";
     os << signatureStr << std::endl;
     printDimensions(os);
     os << maxValue << std::endl;
-    if (signatureStr == "P3") {
-        printPixels(os);
-    } else {
-        saveP6File(os);
-    }
+
+    printPixels(os);
+
     
 }
 
@@ -84,6 +87,8 @@ void PPMImage::loadP3File(std::istream& is) {
             throw FormatException("Max pixel value is too large");
         }
 
+        skipComments(is);
+        
         for (std::size_t y = 0; y < height; y++) {
             for (std::size_t x = 0; x < width; x++) {
                 int red, green, blue;
@@ -109,7 +114,8 @@ void PPMImage::loadP3File(std::istream& is) {
 }
 
 void PPMImage::loadP6File(std::istream& is) {
-    // is.ignore();
+
+    skipComments(is);
 
     try {
         if (maxValue <= 255) {
@@ -154,42 +160,6 @@ void PPMImage::loadP6File(std::istream& is) {
     } catch (...) {
         delete pixels;
         throw;
-    }
-}
-
-void PPMImage::saveP6File(std::ostream& os) {
-    if (maxValue <= 255) {
-        for (std::size_t y = 0; y < height; ++y) {
-            for (std::size_t x = 0; x < width; ++x) {
-                auto pixel = pixels->at(x, y);
-                unsigned char rgb[3] = {
-                    static_cast<unsigned char>(pixel->getChannel(RED)),
-                    static_cast<unsigned char>(pixel->getChannel(GREEN)),
-                    static_cast<unsigned char>(pixel->getChannel(BLUE))
-                };
-                os.write(reinterpret_cast<char*>(rgb), 3);
-            }
-        }
-    } else if (maxValue <= 65535) {
-        for (std::size_t y = 0; y < height; ++y) {
-            for (std::size_t x = 0; x < width; ++x) {
-                auto pixel = pixels->at(x, y);
-                uint16_t r = pixel->getChannel(RED);
-                uint16_t g = pixel->getChannel(GREEN);
-                uint16_t b = pixel->getChannel(BLUE);
-
-                unsigned char rgb[6] = {
-                    static_cast<unsigned char>((r >> 8) & 0xFF),
-                    static_cast<unsigned char>(r & 0xFF),
-                    static_cast<unsigned char>((g >> 8) & 0xFF),
-                    static_cast<unsigned char>(g & 0xFF),
-                    static_cast<unsigned char>((b >> 8) & 0xFF),
-                    static_cast<unsigned char>(b & 0xFF)
-                };
-
-                os.write(reinterpret_cast<char*>(rgb), 6);
-            }
-        }
     }
 }
 

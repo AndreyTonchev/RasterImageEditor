@@ -142,6 +142,15 @@ void Image::transformOrientation(Orientation apply) {
     orientation = orientationTable[static_cast<int>(orientation)][static_cast<int>(apply)];
 }
 
+void Image::skipComments(std::istream& is) {
+    char ch;
+    while (is >> std::ws, is.peek() == '#') {
+        is.get(ch);
+        std::string temp;
+        std::getline(is, temp);
+    }
+}
+
 Orientation Image::orientationTable[8][8] = {
     //        |   R0   |  R90   |  R180  |  R270  |   MH   |   MV   |   DF   |   AD   |
     /* R0  */ { O::R0,   O::R90,  O::R180, O::R270, O::MH,   O::MV,   O::DF,   O::AD },

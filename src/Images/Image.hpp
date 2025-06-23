@@ -166,4 +166,10 @@ protected:
     AbstractPixelMatrix* pixels;       ///< Pointer to pixel matrix
 
     static Orientation orientationTable[8][8]; ///< Orientation transformation lookup matrix
+
+protected:
+    /**
+     * @brief Skips the commnets in the IMage Files.
+     */
+    static void skipComments(std::istream& is);
 };
