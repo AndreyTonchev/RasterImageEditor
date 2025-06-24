@@ -25,4 +25,4 @@ void GrayscaleCommand::execute() {
     }
 }
 
-static CommandRegistrar<GrayscaleCommand> reg_grayscale("grayscale", "Converts all images to shades of gray, removing all color information.");
+static CommandRegistrar<GrayscaleCommand> reg_grayscale("grayscale", "grayscale - Converts all images to shades of gray, removing all color information.");

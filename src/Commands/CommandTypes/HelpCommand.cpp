@@ -10,4 +10,4 @@ void HelpCommand::execute() {
     CommandFactory::listCommands();
 }
 
-static CommandRegistrar<HelpCommand> reg_help("help", "List all the available commands.");
+static CommandRegistrar<HelpCommand> reg_help("help", "help - List all the available commands.");

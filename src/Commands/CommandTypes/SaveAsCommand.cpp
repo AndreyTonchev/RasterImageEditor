@@ -72,4 +72,4 @@ void SaveAsCommand::parse(const std::vector<std::string>& args) {
     filenames = args;
 }
 
-static CommandRegistrar<SaveAsCommand> reg_negative("saveas", "Save all the images as the specified names");
+static CommandRegistrar<SaveAsCommand> reg_negative("saveas", "saveas <filename1> <filename2> ... - Save all the images as the specified names");

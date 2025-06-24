@@ -36,4 +36,4 @@ void UndoCommand::execute() {
 
 }
 
-static CommandRegistrar<UndoCommand> reg_undo("undo", "Undo the last applied command");
+static CommandRegistrar<UndoCommand> reg_undo("undo", "udno - Undo the last applied command");

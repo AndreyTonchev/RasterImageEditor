@@ -8,7 +8,7 @@ public:
     BMPImage(const std::string& filename);
 
     virtual Image* clone() const override;
-    virtual void save(const std::string& filename) override {}
+    virtual void save(const std::string& filename) override;
     virtual ~BMPImage() { delete pixels; };
 
 private:
@@ -47,6 +47,7 @@ private:
     void printMetadata(std::ostream& os = std::cout) const;
 
     void load24(std::ifstream& is);
+    
 
 private:
     enum Channels {

@@ -72,4 +72,4 @@ void PasteCommand::execute() {
 
 }
 
-static CommandRegistrar<PasteCommand> reg_load("paste", "Create a new session and add images to it");
+static CommandRegistrar<PasteCommand> reg_load("paste", "paste <srcName> <destName> <xPos> <yPos> - Create a new session and add images to it");

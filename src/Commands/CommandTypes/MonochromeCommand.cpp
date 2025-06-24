@@ -24,4 +24,4 @@ void MonochromeCommand::execute() {
     }
 }
 
-static CommandRegistrar<MonochromeCommand> reg_monochrome("monochrome", "Converts all images to pure black and white.");
+static CommandRegistrar<MonochromeCommand> reg_monochrome("monochrome", "monochrome - Converts all images to pure black and white.");

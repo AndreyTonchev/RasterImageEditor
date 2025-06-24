@@ -59,6 +59,6 @@ void SaveCommand::execute() {
     }
 }
 
-static CommandRegistrar<SaveCommand> reg_negative("save", "Save all the images with their name + current time");
+static CommandRegistrar<SaveCommand> reg_negative("save", "save - Save all the images with their name + current time");
 
 

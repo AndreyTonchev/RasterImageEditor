@@ -31,4 +31,4 @@ void RedoCommand::execute() {
     std::cout << "Redoed\n";
 }
 
-static CommandRegistrar<RedoCommand> reg_load("redo", "Redo the last undoed command");
+static CommandRegistrar<RedoCommand> reg_load("redo", "redo - Redo the last undoed command");

@@ -62,7 +62,7 @@ void PBMImage::save(const std::string& filename) {
     }   
     
     std::ofstream file;
-    if (signature == PBMSignature::P1) {
+    if (signature == PBMSignature::P1 || signature == PBMSignature::P4) {
         file.open(filename);
         if (!file) {
             throw FileException("Failed to open file for writing: " + filename);

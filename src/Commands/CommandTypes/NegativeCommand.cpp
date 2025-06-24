@@ -25,4 +25,4 @@ void NegativeCommand::execute() {
     }
 }
 
-static CommandRegistrar<NegativeCommand> reg_negative("negative", "Inverts the colors of all images in the current session.");
+static CommandRegistrar<NegativeCommand> reg_negative("negative", "negative - Inverts the colors of all images in the current session.");

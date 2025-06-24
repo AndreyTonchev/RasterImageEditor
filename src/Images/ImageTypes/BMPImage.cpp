@@ -12,33 +12,36 @@ Image* BMPImage::clone() const {
 
 
 
-// void BMPImage::print(std::ostream& os) {
+void BMPImage::save(const std::string& filename) {
+    if (filename == "") {
+        throw FileException("Bad File Name.");
+    }   
+    std::ofstream file;
+    file.open(filename, std::ios::binary);
+    if (!file) {
+        throw FileException("Failed to open file for writing: " + filename);
+    }
 
-//     const int rowSize = (width * 3 + 3) & ~3;
-//     const uint32_t imageSize = rowSize * height;
-//     const uint32_t fileSize = 14 + 40 + imageSize;
+    const int rowSize = (width * 3 + 3) & ~3;
+    const uint32_t imageSize = rowSize * height;
+    const uint32_t fileSize = 14 + 40 + imageSize;
 
-//     // === FILE HEADER ===
-//     BitmapFileHeader fileHeader;
-//     fileHeader.size = fileSize;
-//     fileHeader.offBits = 54;
+    BitmapFileHeader fileHeader;
+    fileHeader.size = fileSize;
+    fileHeader.offBits = 54;
 
-//     // === DIB HEADER ===
-//     DIBHeader40 dibHeader;
-//     dibHeader.width = width;
-//     dibHeader.height = height; // for bottom-up, or -height for top-down
-//     dibHeader.bitCount = 24;
-//     dibHeader.size = imageSize;
+    DIBHeader40 dibHeader;
+    dibHeader.width = width;
+    dibHeader.height = height;
+    dibHeader.bitCount = 24;
+    dibHeader.size = imageSize;
 
-//     // === Write headers ===
-//     os.write(reinterpret_cast<const char*>(&fileHeader), sizeof(fileHeader));
-//     os.write(reinterpret_cast<const char*>(&dibHeader), sizeof(dibHeader));
 
-//     // === Write pixel data ===
-//     uint8_t padding[3] = {0, 0, 0};
-//     int padSize = rowSize - width * 3;
+    file.write(reinterpret_cast<const char*>(&fileHeader), sizeof(fileHeader));
+    file.write(reinterpret_cast<const char*>(&dibHeader), sizeof(dibHeader));
 
-// }
+    printPixelsBinary(file);
+}
 
 BMPImage::BMPImage(const std::string& filename) {
     this->filename = filename;

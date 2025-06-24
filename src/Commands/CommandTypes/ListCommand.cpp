@@ -36,4 +36,4 @@ void ListCommand::execute() {
     
 }
 
-static CommandRegistrar<ListCommand> reg_list("list", "List info about the current session");
+static CommandRegistrar<ListCommand> reg_list("list", "list - List info about the current session");

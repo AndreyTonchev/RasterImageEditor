@@ -52,4 +52,4 @@ void ExitCommand::execute() {
     
 }
 
-static CommandRegistrar<ExitCommand> reg_negative("exit", "Exit the application.");
+static CommandRegistrar<ExitCommand> reg_negative("exit", "exit - Exit the application.");
